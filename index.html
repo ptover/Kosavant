@@ -313,6 +313,22 @@
         <button class="modal__close" id="payModalClose" aria-label="Close">&times;</button>
       </div>
 
+      <!-- Amount input -->
+      <div class="pay-amount-wrap">
+        <span class="pay-amount-symbol">$</span>
+        <input
+          class="pay-amount-input"
+          id="payAmount"
+          type="number"
+          min="1"
+          step="0.01"
+          placeholder="0.00"
+          inputmode="decimal"
+          aria-label="Payment amount in USD"
+        />
+        <span class="pay-amount-currency">USD</span>
+      </div>
+
       <!-- Apple Pay -->
       <button class="pay-method-btn pay-method-btn--apple" id="applePayBtn" aria-label="Pay with Apple Pay">
         <svg class="pay-method-btn__logo" viewBox="0 0 165 42" fill="currentColor" aria-hidden="true" xmlns="http://www.w3.org/2000/svg">
@@ -502,41 +518,74 @@
       window.location.href = 'sms:+18408994030';
     });
 
-    // Google Pay — use Payment Request API on supported browsers, fallback to Cash App
-    googlePayBtn.addEventListener('click', async () => {
-      const canUseGPay =
-        window.PaymentRequest &&
-        !window.ApplePaySession; // non-Apple device
-
-      if (canUseGPay) {
-        try {
-          const request = new PaymentRequest(
-            [{ supportedMethods: 'https://google.com/pay',
-               data: { apiVersion: 2, apiVersionMinor: 0,
-                 allowedPaymentMethods: [{ type: 'CARD',
-                   parameters: { allowedAuthMethods: ['PAN_ONLY','CRYPTOGRAM_3DS'],
-                     allowedCardNetworks: ['AMEX','DISCOVER','MASTERCARD','VISA']},
-                   tokenizationSpecification: { type: 'PAYMENT_GATEWAY',
-                     parameters: { gateway: 'example', gatewayMerchantId: 'kosavant' }}}],
-                 merchantInfo: { merchantName: 'KO Savant' }}}],
-            { total: { label: 'KO Savant', amount: { currency: 'USD', value: '1.00' }}}
-          );
-          const canMake = await request.canMakePayment();
-          if (canMake) {
-            const result = await request.show();
-            await result.complete('success');
-          } else {
-            throw new Error('not available');
-          }
-        } catch(e) {
-          closeModal(payModal);
-          window.open('https://cash.app/$MoneySavant', '_blank', 'noopener,noreferrer');
-        }
-      } else {
-        closeModal(payModal);
-        window.open('https://cash.app/$MoneySavant', '_blank', 'noopener,noreferrer');
-      }
+    // Google Pay — show amount prompt then open Google Pay
+    googlePayBtn.addEventListener('click', () => {
+      closeModal(payModal);
+      // Show the amount modal then process
+      showGooglePayFlow();
     });
+
+    function showGooglePayFlow() {
+      // Get amount from the input field
+      const rawAmount = document.getElementById('payAmount').value;
+      const amount = parseFloat(rawAmount) > 0 ? parseFloat(rawAmount).toFixed(2) : '1.00';
+
+      // Try native Google Pay via Payment Request API
+      if (window.PaymentRequest) {
+
+        const paymentRequest = new PaymentRequest(
+          [{
+            supportedMethods: 'https://google.com/pay',
+            data: {
+              apiVersion: 2,
+              apiVersionMinor: 0,
+              merchantInfo: {
+                merchantName: 'KO Savant',
+                merchantId: '01234567890123456789' // replace with real Google Pay merchant ID
+              },
+              allowedPaymentMethods: [{
+                type: 'CARD',
+                parameters: {
+                  allowedAuthMethods: ['PAN_ONLY', 'CRYPTOGRAM_3DS'],
+                  allowedCardNetworks: ['AMEX', 'DISCOVER', 'MASTERCARD', 'VISA']
+                },
+                tokenizationSpecification: {
+                  type: 'PAYMENT_GATEWAY',
+                  parameters: {
+                    gateway: 'stripe',
+                    stripe_version: '2018-10-31',
+                    stripe_publishable_key: 'YOUR_STRIPE_PK' // replace with Stripe public key
+                  }
+                }
+              }]
+            }
+          }],
+          {
+            total: {
+              label: 'KO Savant',
+              amount: { currency: 'USD', value: amount }
+            }
+          }
+        );
+
+        paymentRequest.canMakePayment().then(canPay => {
+          if (canPay) {
+            paymentRequest.show()
+              .then(result => result.complete('success'))
+              .catch(() => fallbackToSMS());
+          } else {
+            fallbackToSMS();
+          }
+        }).catch(() => fallbackToSMS());
+      } else {
+        fallbackToSMS();
+      }
+    }
+
+    function fallbackToSMS() {
+      // Open Google Messages / SMS to phone — user sends via Google Pay in Messages
+      window.location.href = 'sms:+18408994030';
+    }
 
     // Bitcoin → show BTC modal
     bitcoinBtn.addEventListener('click', () => {

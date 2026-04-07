@@ -1186,3 +1186,49 @@ p, li { text-wrap: pretty; max-width: 66ch; }
 }
 /* Keep testimonials content above watermarks */
 .testimonials-section .container { position: relative; z-index: 1; }
+
+/* ════════════════════════════════════════════
+   PAY MODAL — AMOUNT INPUT
+════════════════════════════════════════════ */
+.pay-amount-wrap {
+  display: flex;
+  align-items: center;
+  gap: var(--space-2);
+  background: var(--color-bg);
+  border: 1px solid var(--color-accent);
+  border-radius: var(--radius-lg);
+  padding: var(--space-3) var(--space-5);
+  margin-bottom: var(--space-5);
+  box-shadow: 0 0 0 3px rgba(217, 43, 43, 0.08);
+}
+.pay-amount-symbol {
+  font-family: var(--font-display);
+  font-size: var(--text-xl);
+  font-weight: 700;
+  color: var(--color-accent);
+  line-height: 1;
+}
+.pay-amount-input {
+  flex: 1;
+  background: transparent;
+  border: none;
+  outline: none;
+  font-family: var(--font-display);
+  font-size: var(--text-2xl);
+  font-weight: 700;
+  color: var(--color-text);
+  letter-spacing: -0.02em;
+  min-width: 0;
+  padding: 0;
+  -moz-appearance: textfield;
+}
+.pay-amount-input::-webkit-outer-spin-button,
+.pay-amount-input::-webkit-inner-spin-button { -webkit-appearance: none; margin: 0; }
+.pay-amount-input::placeholder { color: var(--color-text-faint); }
+.pay-amount-currency {
+  font-size: var(--text-xs);
+  font-weight: 600;
+  letter-spacing: 0.1em;
+  color: var(--color-text-muted);
+  text-transform: uppercase;
+}

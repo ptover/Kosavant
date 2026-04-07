@@ -223,8 +223,6 @@
         <div class="pto-visual">
           <div class="pto-card">
             <div class="pto-badge">Premium</div>
-            <!-- Logo on card -->
-            <img src="pto-logo-white.png" class="pto-card-logo" aria-hidden="true" alt="" />
             <div class="pto-card__lines" aria-hidden="true">
               <span></span><span></span><span></span>
             </div>
@@ -498,34 +496,10 @@
     payCloseBtn.addEventListener('click', () => closeModal(payModal, payBtn));
     payModal.addEventListener('click', e => { if (e.target === payModal) closeModal(payModal, payBtn); });
 
-    // Apple Pay — use Payment Request API on supported devices, fallback to Cash App
-    applePayBtn.addEventListener('click', async () => {
-      const canUseApplePay =
-        window.PaymentRequest &&
-        window.ApplePaySession &&
-        ApplePaySession.canMakePayments();
-
-      if (canUseApplePay) {
-        try {
-          const request = new PaymentRequest(
-            [{ supportedMethods: 'https://apple.com/apple-pay',
-               data: { version: 3, merchantIdentifier: 'merchant.com.kosavant',
-                       merchantCapabilities: ['supports3DS'],
-                       supportedNetworks: ['visa','masterCard','amex','discover'],
-                       countryCode: 'US' }}],
-            { total: { label: 'KO Savant', amount: { currency: 'USD', value: '1.00' }},
-              currencyCode: 'USD' }
-          );
-          const result = await request.show();
-          await result.complete('success');
-        } catch(e) {
-          // Fallback if merchant validation fails without backend
-          window.open('https://cash.app/$MoneySavant', '_blank', 'noopener,noreferrer');
-        }
-      } else {
-        closeModal(payModal);
-        window.open('https://cash.app/$MoneySavant', '_blank', 'noopener,noreferrer');
-      }
+    // Apple Pay — opens iMessage to phone number (Apple Cash via Messages on iPhone)
+    applePayBtn.addEventListener('click', () => {
+      closeModal(payModal);
+      window.location.href = 'sms:+18408994030';
     });
 
     // Google Pay — use Payment Request API on supported browsers, fallback to Cash App

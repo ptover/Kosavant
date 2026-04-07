@@ -1252,3 +1252,37 @@ p, li { text-wrap: pretty; max-width: 66ch; }
   flex: 1;
   margin-bottom: 0;
 }
+
+/* ════════════════════════════════════════════
+   NATIVE PAYMENT BUTTONS (always visible)
+════════════════════════════════════════════ */
+.pay-buttons-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: var(--space-3);
+  margin-bottom: var(--space-3);
+}
+
+.pay-native-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 56px;
+  border-radius: 10px;
+  cursor: pointer;
+  border: none;
+  transition: opacity 0.18s ease, transform 0.18s ease;
+}
+.pay-native-btn:hover  { opacity: 0.88; transform: translateY(-1px); }
+.pay-native-btn:active { opacity: 0.75; transform: translateY(0); }
+
+/* Apple Pay — official black */
+.pay-native-btn--apple {
+  background: #000;
+}
+
+/* Google Pay — dark surface */
+.pay-native-btn--google {
+  background: #1a1a2e;
+  border: 1px solid #333;
+}

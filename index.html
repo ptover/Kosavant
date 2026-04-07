@@ -516,10 +516,15 @@
     payCloseBtn.addEventListener('click', () => closeModal(payModal, payBtn));
     payModal.addEventListener('click', e => { if (e.target === payModal) closeModal(payModal, payBtn); });
 
-    // Apple Pay — opens iMessage to phone number (Apple Cash via Messages on iPhone)
+    // Apple Pay — runs through Stripe (supports native Apple Pay on Safari/iPhone)
     applePayBtn.addEventListener('click', () => {
       closeModal(payModal);
-      window.location.href = 'sms:+18408994030';
+      const rawAmount = document.getElementById('payAmount').value;
+      const amountUSD = parseFloat(rawAmount) > 0 ? parseFloat(rawAmount).toFixed(2) : null;
+      const url = amountUSD
+        ? `${STRIPE_PAY_LINK}?prefilled_amount=${Math.round(parseFloat(amountUSD) * 100)}`
+        : STRIPE_PAY_LINK;
+      window.open(url, '_blank', 'noopener,noreferrer');
     });
 
     // Google Pay — show amount prompt then open Google Pay

@@ -539,7 +539,8 @@
       const url = amountCents > 0
         ? `${STRIPE_PAY_LINK}?prefilled_amount=${amountCents}`
         : STRIPE_PAY_LINK;
-      window.open(url, '_blank', 'noopener,noreferrer');
+      // Use location.href to avoid popup blocker in Chrome
+      window.location.href = url;
     }
 
     // ── Stripe Express Checkout (real Apple Pay + Google Pay buttons) ──

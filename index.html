@@ -516,96 +516,71 @@
     payCloseBtn.addEventListener('click', () => closeModal(payModal, payBtn));
     payModal.addEventListener('click', e => { if (e.target === payModal) closeModal(payModal, payBtn); });
 
-    // Apple Pay — native Apple Wallet via Stripe.js, fallback to Stripe checkout
-    applePayBtn.addEventListener('click', async () => {
-      closeModal(payModal);
-      const rawAmount = document.getElementById('payAmount').value;
-      const amountCents = parseFloat(rawAmount) > 0
-        ? Math.round(parseFloat(rawAmount) * 100)
-        : 100;
-      const amountStr = (amountCents / 100).toFixed(2);
+    // ── Payment helpers ──────────────────────────
+    function getAmountCents() {
+      const v = parseFloat(document.getElementById('payAmount').value);
+      return v > 0 ? Math.round(v * 100) : 0;
+    }
 
-      // Try to open native Apple Wallet via Stripe.js
+    function requireAmount() {
+      const input = document.getElementById('payAmount');
+      if (getAmountCents() === 0) {
+        input.focus();
+        input.style.borderColor = 'var(--color-accent)';
+        input.placeholder = 'Enter an amount first';
+        setTimeout(() => {
+          input.style.borderColor = '';
+          input.placeholder = '0.00';
+        }, 2500);
+        return false;
+      }
+      return true;
+    }
+
+    function stripeCheckout(amountCents) {
+      const url = amountCents > 0
+        ? `${STRIPE_PAY_LINK}?prefilled_amount=${amountCents}`
+        : STRIPE_PAY_LINK;
+      window.open(url, '_blank', 'noopener,noreferrer');
+    }
+
+    // ── Apple Pay ─────────────────────────────
+    // Opens native Apple Wallet via Stripe.js on iPhone/Safari;
+    // falls back to Stripe hosted checkout on other devices.
+    applePayBtn.addEventListener('click', async () => {
+      if (!requireAmount()) return;
+      closeModal(payModal);
+      const cents = getAmountCents();
+
       if (window.Stripe && window.ApplePaySession && ApplePaySession.canMakePayments()) {
         try {
           const stripe = Stripe(STRIPE_PK);
           const pr = stripe.paymentRequest({
-            country: 'US',
-            currency: 'usd',
-            total: { label: 'KO Savant', amount: amountCents },
+            country: 'US', currency: 'usd',
+            total: { label: 'KO Savant', amount: cents },
             requestPayerName: true,
-            requestPayerEmail: false,
           });
-
-          const result = await pr.canMakePayment();
-          if (result && result.applePay) {
+          const check = await pr.canMakePayment();
+          if (check && check.applePay) {
             pr.show();
-            pr.on('paymentmethod', (ev) => {
-              // Apple Pay authorized — complete and redirect to Stripe to finalize charge
+            pr.on('paymentmethod', ev => {
               ev.complete('success');
-              window.location.href = `${STRIPE_PAY_LINK}?prefilled_amount=${amountCents}`;
+              stripeCheckout(cents); // redirect to confirm charge
             });
-            return; // Wallet opened successfully
+            return;
           }
-        } catch(e) { /* fall through */ }
+        } catch(_) {}
       }
-
-      // Fallback: open Stripe checkout (also shows Apple Pay natively on iPhone)
-      const url = `${STRIPE_PAY_LINK}?prefilled_amount=${amountCents}`;
-      window.open(url, '_blank', 'noopener,noreferrer');
+      stripeCheckout(cents); // fallback — Stripe checkout shows Apple Pay natively
     });
 
-    // Google Pay — show amount prompt then open Google Pay
+    // ── Google Pay ───────────────────────────
+    // Opens Stripe hosted checkout — shows native Google Pay on Android Chrome.
     googlePayBtn.addEventListener('click', () => {
+      if (!requireAmount()) return;
       closeModal(payModal);
-      // Show the amount modal then process
-      showGooglePayFlow();
+      stripeCheckout(getAmountCents());
     });
-
-    function showGooglePayFlow() {
-      const rawAmount = document.getElementById('payAmount').value;
-      const amountUSD = parseFloat(rawAmount) > 0 ? parseFloat(rawAmount).toFixed(2) : null;
-
-      // --- Option A: Stripe Payment Link (works on all devices, no backend needed) ---
-      if (STRIPE_PAY_LINK && !STRIPE_PAY_LINK.startsWith('PASTE')) {
-        const url = amountUSD
-          ? `${STRIPE_PAY_LINK}?prefilled_amount=${Math.round(parseFloat(amountUSD) * 100)}`
-          : STRIPE_PAY_LINK;
-        window.open(url, '_blank', 'noopener,noreferrer');
-        return;
-      }
-
-      // --- Option B: Stripe.js Payment Request (native Google Pay sheet) ---
-      if (window.Stripe && amountUSD) {
-        try {
-          const stripe = Stripe(STRIPE_PK);
-          const pr = stripe.paymentRequest({
-            country: 'US',
-            currency: 'usd',
-            total: { label: 'KO Savant', amount: Math.round(parseFloat(amountUSD) * 100) },
-            requestPayerName: true,
-          });
-          pr.canMakePayment().then(result => {
-            if (result && result.googlePay) {
-              pr.show();
-              pr.on('paymentmethod', ev => {
-                // Payment method captured — send ev.paymentMethod.id to backend to complete charge
-                ev.complete('success');
-                alert('✅ Payment received! Thank you.');
-              });
-            } else {
-              fallbackToSMS();
-            }
-          });
-        } catch(e) { fallbackToSMS(); }
-      } else {
-        fallbackToSMS();
-      }
-    }
-
-    function fallbackToSMS() {
-      window.location.href = 'sms:+18408994030';
-    }
 
     // Bitcoin → show BTC modal
     bitcoinBtn.addEventListener('click', () => {

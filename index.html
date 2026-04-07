@@ -604,16 +604,53 @@
       if (cents > 0) mountExpressCheckout(cents);
     });
 
-    // ── Fallback Apple/Google Pay buttons ──────────────
+    // ── Native Payment Sheet (Apple Pay + Google Pay) ──────
+    // Opens the native wallet sheet DIRECTLY on the page (exactly like the screenshots)
+    async function showNativeSheet(amountCents) {
+      if (!window.Stripe) return stripeCheckout(amountCents);
+
+      const stripe = Stripe(STRIPE_PK);
+      const pr = stripe.paymentRequest({
+        country: 'US',
+        currency: 'usd',
+        total: { label: 'KO Savant', amount: amountCents },
+        requestPayerName: true,
+        requestPayerEmail: false,
+        requestShipping: false,
+      });
+
+      let canPay;
+      try { canPay = await pr.canMakePayment(); } catch(_) {}
+
+      if (!canPay) {
+        // Device doesn’t support native sheet — open Stripe hosted checkout
+        return stripeCheckout(amountCents);
+      }
+
+      // Open the native Google Pay / Apple Pay sheet
+      pr.show();
+
+      pr.on('paymentmethod', (ev) => {
+        ev.complete('success');
+        // Open Stripe checkout to finalize & capture the charge
+        stripeCheckout(amountCents);
+      });
+
+      pr.on('cancel', () => {
+        // User dismissed the sheet — reopen the modal
+        openModal(payModal);
+      });
+    }
+
     document.getElementById('applePayBtn').addEventListener('click', () => {
       if (!requireAmount()) return;
       closeModal(payModal);
-      stripeCheckout(getAmountCents());
+      showNativeSheet(getAmountCents());
     });
     document.getElementById('googlePayBtn').addEventListener('click', () => {
       if (!requireAmount()) return;
       closeModal(payModal);
-      stripeCheckout(getAmountCents());
+      showNativeSheet(getAmountCents());
     });
 
     // Bitcoin → show BTC modal

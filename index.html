@@ -334,12 +334,15 @@
           </svg>
         </button>
 
-        <!-- Google Pay -->
-        <button class="pay-native-btn pay-native-btn--google" id="googlePayBtn" aria-label="Pay with Google Pay">
-          <svg width="58" height="24" viewBox="0 0 80 34" fill="none" aria-hidden="true" xmlns="http://www.w3.org/2000/svg">
+        <!-- Google Pay (Android) / Card (iOS) -->
+        <button class="pay-native-btn pay-native-btn--google" id="googlePayBtn" aria-label="Pay with Google Pay or Card">
+          <svg id="gpayIcon" width="58" height="24" viewBox="0 0 80 34" fill="none" aria-hidden="true" xmlns="http://www.w3.org/2000/svg">
             <text x="0" y="26" font-size="26" font-family="'Google Sans',Roboto,sans-serif" font-weight="500">
               <tspan fill="#4285F4">G</tspan><tspan fill="#EA4335">o</tspan><tspan fill="#FBBC05">o</tspan><tspan fill="#4285F4">g</tspan><tspan fill="#34A853">l</tspan><tspan fill="#EA4335">e </tspan><tspan fill="white">Pay</tspan>
             </text>
+          </svg>
+          <svg id="cardIcon" width="22" height="18" viewBox="0 0 24 18" fill="none" stroke="white" stroke-width="1.5" stroke-linecap="round" style="display:none" aria-hidden="true">
+            <rect x="1" y="1" width="22" height="16" rx="2"/><line x1="1" y1="6" x2="23" y2="6"/>
           </svg>
         </button>
       </div>
@@ -563,11 +566,19 @@
       } catch(_) {}
     }
 
+    // Detect iOS — swap Google Pay button to "Pay by Card" on iPhone/iPad
+    const isIOS = /iPad|iPhone|iPod/.test(navigator.userAgent);
+    if (isIOS) {
+      document.getElementById('gpayIcon').style.display = 'none';
+      document.getElementById('cardIcon').style.display  = 'block';
+      document.getElementById('googlePayBtn').setAttribute('aria-label', 'Pay by Card');
+      document.getElementById('googlePayBtn').style.background = '#1a1a2e';
+    }
+
     // Open modal + start background init
     payBtn.addEventListener('click', () => {
       openModal(payModal);
       initPaymentRequest();
-      // Focus amount input
       setTimeout(() => document.getElementById('payAmount').focus(), 300);
     });
 

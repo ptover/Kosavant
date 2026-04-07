@@ -315,8 +315,13 @@
         <button class="modal__close" id="payModalClose" aria-label="Close">&times;</button>
       </div>
 
-      <!-- Express Checkout: Stripe renders real Apple Pay + Google Pay here -->
-      <div id="express-checkout-element" class="express-checkout-wrap" style="display:none"></div>
+      <!-- Amount input -->
+      <div class="pay-amount-wrap">
+        <span class="pay-amount-symbol">$</span>
+        <input class="pay-amount-input" id="payAmount" type="number" min="1" step="1"
+          placeholder="Enter amount" inputmode="decimal" aria-label="Payment amount" />
+        <span class="pay-amount-currency">USD</span>
+      </div>
 
       <!-- Payment buttons — always visible, enhanced by Stripe where supported -->
       <div class="pay-buttons-row">
@@ -503,10 +508,28 @@
     payCloseBtn.addEventListener('click', () => closeModal(payModal, payBtn));
     payModal.addEventListener('click', e => { if (e.target === payModal) closeModal(payModal, payBtn); });
 
-    // ── Payment helpers ──────────────────────────
-    function stripeCheckout() {
-      // Go to Stripe hosted checkout — user enters amount there
-      window.location.href = STRIPE_PAY_LINK;
+    // ── Helpers ───────────────────────────────
+    function getAmountCents() {
+      const v = parseFloat(document.getElementById('payAmount').value);
+      return v > 0 ? Math.round(v * 100) : 0;
+    }
+    function requireAmount() {
+      const input = document.getElementById('payAmount');
+      const cents = getAmountCents();
+      if (cents === 0) {
+        input.focus();
+        input.classList.add('shake');
+        input.placeholder = 'Enter an amount first';
+        setTimeout(() => { input.classList.remove('shake'); input.placeholder='Enter amount'; }, 1800);
+        return false;
+      }
+      return true;
+    }
+    function stripeCheckout(cents) {
+      const url = cents > 0
+        ? `${STRIPE_PAY_LINK}?prefilled_amount=${cents}`
+        : STRIPE_PAY_LINK;
+      window.location.href = url;
     }
 
     // ── Payment Request (Apple Wallet + Google Pay native) ──────
@@ -544,25 +567,34 @@
     payBtn.addEventListener('click', () => {
       openModal(payModal);
       initPaymentRequest();
+      // Focus amount input
+      setTimeout(() => document.getElementById('payAmount').focus(), 300);
     });
 
-    // Apple Pay — opens Apple Wallet directly (sync .show())
+    // Apple Pay — opens Apple Wallet with entered amount
     document.getElementById('applePayBtn').addEventListener('click', () => {
+      if (!requireAmount()) return;
+      const cents = getAmountCents();
       closeModal(payModal);
       if (_pr && _hasApple) {
+        try { _pr.update({ total: { label: 'KO Savant', amount: cents } }); } catch(_) {}
         _pr.show();
       } else {
-        window.location.href = STRIPE_PAY_LINK;
+        stripeCheckout(cents);
       }
     });
 
-    // Google Pay — opens pay.google.com directly (sync .show())
+    // Google Pay — opens Google Pay platform with entered amount
     document.getElementById('googlePayBtn').addEventListener('click', () => {
+      if (!requireAmount()) return;
+      const cents = getAmountCents();
       closeModal(payModal);
       if (_pr && _hasGoogle) {
+        try { _pr.update({ total: { label: 'KO Savant', amount: cents } }); } catch(_) {}
         _pr.show();
       } else {
-        window.location.href = STRIPE_PAY_LINK;
+        // Fallback: open Stripe checkout which shows Google Pay at the top
+        stripeCheckout(cents);
       }
     });
 

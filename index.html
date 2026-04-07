@@ -315,22 +315,6 @@
         <button class="modal__close" id="payModalClose" aria-label="Close">&times;</button>
       </div>
 
-      <!-- Amount input -->
-      <div class="pay-amount-wrap">
-        <span class="pay-amount-symbol">$</span>
-        <input
-          class="pay-amount-input"
-          id="payAmount"
-          type="number"
-          min="1"
-          step="0.01"
-          placeholder="0.00"
-          inputmode="decimal"
-          aria-label="Payment amount in USD"
-        />
-        <span class="pay-amount-currency">USD</span>
-      </div>
-
       <!-- Express Checkout: Stripe renders real Apple Pay + Google Pay here -->
       <div id="express-checkout-element" class="express-checkout-wrap" style="display:none"></div>
 
@@ -520,27 +504,9 @@
     payModal.addEventListener('click', e => { if (e.target === payModal) closeModal(payModal, payBtn); });
 
     // ── Payment helpers ──────────────────────────
-    function getAmountCents() {
-      const v = parseFloat(document.getElementById('payAmount').value);
-      return v > 0 ? Math.round(v * 100) : 0;
-    }
-    function requireAmount() {
-      const input = document.getElementById('payAmount');
-      if (getAmountCents() === 0) {
-        input.focus();
-        input.style.borderColor = 'var(--color-accent)';
-        input.placeholder = 'Enter amount first';
-        setTimeout(() => { input.style.borderColor=''; input.placeholder='0.00'; }, 2500);
-        return false;
-      }
-      return true;
-    }
-    function stripeCheckout(amountCents) {
-      const url = amountCents > 0
-        ? `${STRIPE_PAY_LINK}?prefilled_amount=${amountCents}`
-        : STRIPE_PAY_LINK;
-      // Use location.href to avoid popup blocker in Chrome
-      window.location.href = url;
+    function stripeCheckout() {
+      // Go to Stripe hosted checkout — user enters amount there
+      window.location.href = STRIPE_PAY_LINK;
     }
 
     // ── Stripe Express Checkout (real Apple Pay + Google Pay buttons) ──
@@ -593,66 +559,20 @@
       expressCheckoutEl.mount('#express-checkout-element');
     }
 
-    // Mount when modal opens; re-mount when amount changes
+    // Mount express checkout when modal opens
     payBtn.addEventListener('click', () => {
       openModal(payModal);
-      const cents = getAmountCents() || 100;
-      mountExpressCheckout(cents);
+      mountExpressCheckout(100); // default $1 placeholder
     });
 
-    document.getElementById('payAmount').addEventListener('change', () => {
-      const cents = getAmountCents();
-      if (cents > 0) mountExpressCheckout(cents);
-    });
-
-    // ── Native Payment Sheet (Apple Pay + Google Pay) ──────
-    async function showNativeSheet(amountCents) {
-      if (!window.Stripe) return stripeCheckout(amountCents);
-
-      const stripe = Stripe(STRIPE_PK);
-      const pr = stripe.paymentRequest({
-        country: 'US',
-        currency: 'usd',
-        total: { label: 'KO Savant', amount: amountCents },
-        requestPayerName: true,
-        requestPayerEmail: false,
-        requestShipping: false,
-      });
-
-      let canPay;
-      try { canPay = await pr.canMakePayment(); } catch(_) {}
-
-      // ONLY open native sheet when Apple Pay OR Google Pay is specifically available
-      // If only "link" is available (Stripe Link), skip to hosted checkout instead
-      const hasNativeWallet = canPay && (canPay.applePay === true || canPay.googlePay === true);
-
-      if (!hasNativeWallet) {
-        // Go directly to Stripe checkout — it shows Apple Pay / Google Pay at the top
-        return stripeCheckout(amountCents);
-      }
-
-      // Native Apple Pay or Google Pay is available — show the sheet directly
-      pr.show();
-
-      pr.on('paymentmethod', (ev) => {
-        ev.complete('success');
-        stripeCheckout(amountCents); // Confirm & capture via Stripe
-      });
-
-      pr.on('cancel', () => {
-        openModal(payModal); // User dismissed — let them try again
-      });
-    }
-
+    // ── Apple Pay + Google Pay ── both go straight to Stripe checkout
     document.getElementById('applePayBtn').addEventListener('click', () => {
-      if (!requireAmount()) return;
       closeModal(payModal);
-      showNativeSheet(getAmountCents());
+      stripeCheckout();
     });
     document.getElementById('googlePayBtn').addEventListener('click', () => {
-      if (!requireAmount()) return;
       closeModal(payModal);
-      showNativeSheet(getAmountCents());
+      stripeCheckout();
     });
 
     // Bitcoin → show BTC modal

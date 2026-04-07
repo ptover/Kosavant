@@ -10,6 +10,11 @@
   <meta property="og:image" content="https://kosavant.com/images/KO-savant-photo.jpg" />
   <meta property="og:url" content="https://kosavant.com" />
 
+  <!-- Favicon -->
+  <link rel="icon" type="image/x-icon" href="favicon.ico" />
+  <link rel="icon" type="image/png" sizes="32x32" href="favicon-32.png" />
+  <link rel="apple-touch-icon" sizes="180x180" href="favicon-180.png" />
+
   <!-- Preconnect for fonts -->
   <link rel="preconnect" href="https://api.fontshare.com" />
   <link href="https://api.fontshare.com/v2/css?f[]=clash-display@400,500,600,700&f[]=satoshi@300,400,500,700&display=swap" rel="stylesheet" />
@@ -22,6 +27,11 @@
   ═══════════════════════════════════ -->
   <section class="hero" id="top">
     <div class="hero__noise" aria-hidden="true"></div>
+
+    <!-- PTO logo watermarks scattered in hero -->
+    <img src="pto-logo-white.png" class="hero-logo-bg hero-logo-bg--1" aria-hidden="true" alt="" />
+    <img src="pto-logo-white.png" class="hero-logo-bg hero-logo-bg--2" aria-hidden="true" alt="" />
+    <img src="pto-logo-white.png" class="hero-logo-bg hero-logo-bg--3" aria-hidden="true" alt="" />
 
     <div class="brand-lines" aria-hidden="true">
       <span class="line line--1"></span>
@@ -230,6 +240,9 @@
        TESTIMONIALS
   ═══════════════════════════════════ -->
   <section class="testimonials-section">
+    <!-- Logo watermarks in testimonials bg -->
+    <img src="pto-logo-white.png" class="section-logo-bg section-logo-bg--tl" aria-hidden="true" alt="" />
+    <img src="pto-logo-white.png" class="section-logo-bg section-logo-bg--br" aria-hidden="true" alt="" />
     <div class="container">
       <p class="section-eyebrow">Social Proof</p>
       <h2 class="section-title">What Clients Say</h2>
@@ -445,7 +458,7 @@
   <script>
     // ─────────────────────────────────────────
     // YOUR BITCOIN ADDRESS — update this line:
-    const BTC_ADDRESS = 'YOUR_BTC_ADDRESS_HERE';
+    const BTC_ADDRESS = 'bc1qnqx9kaqg7xnghfc7t6vcms0skxz5thyu37xc5a';
     // ─────────────────────────────────────────
 
     // ── Booking Modal ─────────────────────────
@@ -485,16 +498,70 @@
     payCloseBtn.addEventListener('click', () => closeModal(payModal, payBtn));
     payModal.addEventListener('click', e => { if (e.target === payModal) closeModal(payModal, payBtn); });
 
-    // Apple Pay → Cash App (which accepts Apple Pay on iOS Safari)
-    applePayBtn.addEventListener('click', () => {
-      closeModal(payModal);
-      window.open('https://cash.app/$MoneySavant', '_blank', 'noopener,noreferrer');
+    // Apple Pay — use Payment Request API on supported devices, fallback to Cash App
+    applePayBtn.addEventListener('click', async () => {
+      const canUseApplePay =
+        window.PaymentRequest &&
+        window.ApplePaySession &&
+        ApplePaySession.canMakePayments();
+
+      if (canUseApplePay) {
+        try {
+          const request = new PaymentRequest(
+            [{ supportedMethods: 'https://apple.com/apple-pay',
+               data: { version: 3, merchantIdentifier: 'merchant.com.kosavant',
+                       merchantCapabilities: ['supports3DS'],
+                       supportedNetworks: ['visa','masterCard','amex','discover'],
+                       countryCode: 'US' }}],
+            { total: { label: 'KO Savant', amount: { currency: 'USD', value: '1.00' }},
+              currencyCode: 'USD' }
+          );
+          const result = await request.show();
+          await result.complete('success');
+        } catch(e) {
+          // Fallback if merchant validation fails without backend
+          window.open('https://cash.app/$MoneySavant', '_blank', 'noopener,noreferrer');
+        }
+      } else {
+        closeModal(payModal);
+        window.open('https://cash.app/$MoneySavant', '_blank', 'noopener,noreferrer');
+      }
     });
 
-    // Google Pay → Cash App (which accepts Google Pay on Android)
-    googlePayBtn.addEventListener('click', () => {
-      closeModal(payModal);
-      window.open('https://cash.app/$MoneySavant', '_blank', 'noopener,noreferrer');
+    // Google Pay — use Payment Request API on supported browsers, fallback to Cash App
+    googlePayBtn.addEventListener('click', async () => {
+      const canUseGPay =
+        window.PaymentRequest &&
+        !window.ApplePaySession; // non-Apple device
+
+      if (canUseGPay) {
+        try {
+          const request = new PaymentRequest(
+            [{ supportedMethods: 'https://google.com/pay',
+               data: { apiVersion: 2, apiVersionMinor: 0,
+                 allowedPaymentMethods: [{ type: 'CARD',
+                   parameters: { allowedAuthMethods: ['PAN_ONLY','CRYPTOGRAM_3DS'],
+                     allowedCardNetworks: ['AMEX','DISCOVER','MASTERCARD','VISA']},
+                   tokenizationSpecification: { type: 'PAYMENT_GATEWAY',
+                     parameters: { gateway: 'example', gatewayMerchantId: 'kosavant' }}}],
+                 merchantInfo: { merchantName: 'KO Savant' }}}],
+            { total: { label: 'KO Savant', amount: { currency: 'USD', value: '1.00' }}}
+          );
+          const canMake = await request.canMakePayment();
+          if (canMake) {
+            const result = await request.show();
+            await result.complete('success');
+          } else {
+            throw new Error('not available');
+          }
+        } catch(e) {
+          closeModal(payModal);
+          window.open('https://cash.app/$MoneySavant', '_blank', 'noopener,noreferrer');
+        }
+      } else {
+        closeModal(payModal);
+        window.open('https://cash.app/$MoneySavant', '_blank', 'noopener,noreferrer');
+      }
     });
 
     // Bitcoin → show BTC modal

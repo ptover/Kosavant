@@ -1133,3 +1133,66 @@ p, li { text-wrap: pretty; max-width: 66ch; }
   opacity: 0.8;
   display: block;
 }
+
+/* ════════════════════════════════════════════
+   HERO LOGO WATERMARKS
+════════════════════════════════════════════ */
+.hero-logo-bg {
+  position: absolute;
+  pointer-events: none;
+  user-select: none;
+}
+.hero-logo-bg--1 {
+  width: clamp(260px, 32vw, 480px);
+  opacity: 0.04;
+  bottom: 5%;
+  right: 3%;
+  transform: rotate(20deg);
+  z-index: 0;
+}
+.hero-logo-bg--2 {
+  width: clamp(160px, 18vw, 280px);
+  opacity: 0.03;
+  top: 8%;
+  left: 15%;
+  transform: rotate(-25deg);
+  z-index: 0;
+}
+.hero-logo-bg--3 {
+  width: clamp(120px, 14vw, 200px);
+  opacity: 0.025;
+  top: 15%;
+  right: 20%;
+  transform: rotate(10deg);
+  z-index: 0;
+}
+/* Keep hero content above watermarks */
+.hero__inner { position: relative; z-index: 1; }
+
+/* ════════════════════════════════════════════
+   TESTIMONIALS SECTION LOGO WATERMARKS
+════════════════════════════════════════════ */
+.testimonials-section { position: relative; overflow: hidden; }
+.section-logo-bg {
+  position: absolute;
+  pointer-events: none;
+  user-select: none;
+}
+.section-logo-bg--tl {
+  width: clamp(180px, 22vw, 320px);
+  opacity: 0.035;
+  top: -5%;
+  left: -3%;
+  transform: rotate(-15deg);
+  z-index: 0;
+}
+.section-logo-bg--br {
+  width: clamp(140px, 16vw, 240px);
+  opacity: 0.025;
+  bottom: -5%;
+  right: -2%;
+  transform: rotate(20deg);
+  z-index: 0;
+}
+/* Keep testimonials content above watermarks */
+.testimonials-section .container { position: relative; z-index: 1; }

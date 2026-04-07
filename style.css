@@ -500,7 +500,7 @@ p, li { text-wrap: pretty; max-width: 66ch; }
   content: '';
   position: absolute;
   inset: 0;
-  background: url('https://kosavant.com/images/KO-savant-photo.jpg') center top / cover no-repeat;
+  background: url('ko-savant-photo.jpg') center top / cover no-repeat;
   opacity: 0.55;
   border-radius: inherit;
 }

@@ -1,7 +1,7 @@
 /* ═══════════════════════════════════════════════
    KO SAVANT — Premium Redesign
    Dark editorial streetwear × business authority
-   Palette: Near-black + crimson red accent
+   Palette: Near-black + emerald green accent
 ═══════════════════════════════════════════════ */
 
 /* ── TOKENS ─────────────────────────────────── */
@@ -17,9 +17,9 @@
   --color-text-muted:   #7a7876;
   --color-text-faint:   #404040;
 
-  --color-accent:       #d92b2b;
-  --color-accent-hover: #f03030;
-  --color-accent-dim:   rgba(217, 43, 43, 0.12);
+  --color-accent:       #2bd946;
+  --color-accent-hover: #30f040;
+  --color-accent-dim:   rgba(43, 217, 70, 0.12);
 
   /* Type */
   --font-display: 'Clash Display', 'Helvetica Neue', sans-serif;
@@ -138,7 +138,7 @@ p, li { text-wrap: pretty; max-width: 66ch; }
   z-index: 0;
 }
 
-/* Red brand lines (matching existing brand identity) */
+/* Green brand lines (matching existing brand identity) */
 .brand-lines {
   position: absolute;
   inset: 0;
@@ -199,11 +199,11 @@ p, li { text-wrap: pretty; max-width: 66ch; }
   border-radius: 50%;
   padding: 3px;
   background: linear-gradient(135deg, var(--color-accent) 0%, #1a1a1a 60%);
-  box-shadow: 0 0 40px rgba(217, 43, 43, 0.2);
+  box-shadow: 0 0 40px rgba(43, 217, 70, 0.2);
   transition: box-shadow 0.4s var(--ease-out);
 }
 .avatar-ring:hover {
-  box-shadow: 0 0 60px rgba(217, 43, 43, 0.35);
+  box-shadow: 0 0 60px rgba(43, 217, 70, 0.35);
 }
 .avatar-svg {
   width: 100%;
@@ -389,10 +389,10 @@ p, li { text-wrap: pretty; max-width: 66ch; }
 }
 .link-card--primary {
   border-left: 3px solid var(--color-accent);
-  background: rgba(217, 43, 43, 0.06);
+  background: rgba(43, 217, 70, 0.06);
 }
 .link-card--primary:hover {
-  background: rgba(217, 43, 43, 0.1);
+  background: rgba(43, 217, 70, 0.1);
 }
 
 .link-card__icon {
@@ -407,8 +407,8 @@ p, li { text-wrap: pretty; max-width: 66ch; }
   color: var(--color-accent);
 }
 .link-card--primary .link-card__icon {
-  background: rgba(217, 43, 43, 0.1);
-  border-color: rgba(217, 43, 43, 0.2);
+  background: rgba(43, 217, 70, 0.1);
+  border-color: rgba(43, 217, 70, 0.2);
 }
 .link-card__icon svg { width: 18px; height: 18px; }
 
@@ -584,7 +584,7 @@ p, li { text-wrap: pretty; max-width: 66ch; }
 .btn--primary:hover {
   background: var(--color-accent-hover);
   transform: translateY(-1px);
-  box-shadow: 0 8px 24px rgba(217, 43, 43, 0.3);
+  box-shadow: 0 8px 24px rgba(43, 217, 70, 0.3);
 }
 
 /* ════════════════════════════════════════════
@@ -642,7 +642,7 @@ p, li { text-wrap: pretty; max-width: 66ch; }
   height: 40px;
   border-radius: 50%;
   background: var(--color-accent-dim);
-  border: 1px solid rgba(217,43,43,0.2);
+  border: 1px solid rgba(43,217,70,0.2);
   display: grid;
   place-items: center;
   font-size: var(--text-xs);
@@ -757,7 +757,7 @@ p, li { text-wrap: pretty; max-width: 66ch; }
 .form-field textarea:focus {
   outline: none;
   border-color: var(--color-accent);
-  box-shadow: 0 0 0 3px rgba(217, 43, 43, 0.12);
+  box-shadow: 0 0 0 3px rgba(43, 217, 70, 0.12);
 }
 .form-field textarea { resize: vertical; min-height: 100px; }
 .form-field select { appearance: none; cursor: pointer; }
@@ -859,12 +859,12 @@ p, li { text-wrap: pretty; max-width: 66ch; }
   width: 100%;
 }
 .link-card__icon--pay {
-  background: linear-gradient(135deg, rgba(217,43,43,0.15), rgba(247,147,26,0.12));
+  background: linear-gradient(135deg, rgba(43,217,70,0.15), rgba(247,147,26,0.12));
   border-color: rgba(247,147,26,0.2);
   color: #F7931A;
 }
 .link-card--pay:hover .link-card__icon--pay {
-  background: linear-gradient(135deg, rgba(217,43,43,0.25), rgba(247,147,26,0.2));
+  background: linear-gradient(135deg, rgba(43,217,70,0.25), rgba(247,147,26,0.2));
 }
 
 /* ════════════════════════════════════════════
@@ -1199,7 +1199,7 @@ p, li { text-wrap: pretty; max-width: 66ch; }
   border-radius: var(--radius-lg);
   padding: var(--space-3) var(--space-5);
   margin-bottom: var(--space-5);
-  box-shadow: 0 0 0 3px rgba(217, 43, 43, 0.08);
+  box-shadow: 0 0 0 3px rgba(43, 217, 70, 0.08);
 }
 .pay-amount-symbol {
   font-family: var(--font-display);

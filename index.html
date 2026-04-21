@@ -426,13 +426,46 @@
         <li>Apple Pay and Google Pay appear automatically on supported devices</li>
         <li>Cash App Pay, bank transfer, and cards are available in the same flow</li>
       </ul>
-      <a class="btn btn--primary btn--block pay-checkout-btn" id="stripeCheckoutBtn" href="https://buy.stripe.com/fZu4gyaCyaqqb9E7PlbAs00" target="_blank" rel="noopener noreferrer">
-        Continue to secure checkout
+
+      <div class="pay-preset-panel" aria-labelledby="payPresetHeading">
+        <div class="pay-preset-header">
+          <p class="pay-preset-eyebrow">Recommended payment presets</p>
+          <h3 class="pay-preset-heading" id="payPresetHeading">Choose the closest service so people can pay faster.</h3>
+        </div>
+
+        <div class="pay-preset-grid" role="list" aria-label="Preset payment options">
+          <button class="pay-preset is-selected" type="button" data-payment-preset="15-min-consult" data-preset-label="15 Min Consult" data-preset-amount="$50" data-preset-note="Fast strategy touchpoint for quick direction and follow-up questions.">
+            <span class="pay-preset__name">15 Min Consult</span>
+            <span class="pay-preset__amount">$50</span>
+            <span class="pay-preset__meta">Quick strategy call</span>
+          </button>
+          <button class="pay-preset" type="button" data-payment-preset="30-min-consult" data-preset-label="30 Min Consult" data-preset-amount="$100" data-preset-note="More room for brand, business, and execution questions.">
+            <span class="pay-preset__name">30 Min Consult</span>
+            <span class="pay-preset__amount">$100</span>
+            <span class="pay-preset__meta">Deeper strategy session</span>
+          </button>
+          <button class="pay-preset" type="button" data-payment-preset="brand-audit" data-preset-label="Brand Audit" data-preset-amount="$250" data-preset-note="Best for positioning, messaging, and a sharper brand direction review.">
+            <span class="pay-preset__name">Brand Audit</span>
+            <span class="pay-preset__amount">$250</span>
+            <span class="pay-preset__meta">Messaging + offer review</span>
+          </button>
+          <button class="pay-preset" type="button" data-payment-preset="custom-payment" data-preset-label="Custom Payment" data-preset-amount="Flexible" data-preset-note="Use this for deposits, invoice balances, or a number already discussed.">
+            <span class="pay-preset__name">Custom Payment</span>
+            <span class="pay-preset__amount">Flexible</span>
+            <span class="pay-preset__meta">Deposits or custom totals</span>
+          </button>
+        </div>
+
+        <p class="pay-preset-summary" id="payPresetSummary">Selected service: 15 Min Consult · Suggested payment $50</p>
+      </div>
+
+      <a class="btn btn--primary btn--block pay-checkout-btn" id="stripeCheckoutBtn" href="https://buy.stripe.com/fZu4gyaCyaqqb9E7PlbAs00" target="_blank" rel="noopener noreferrer" aria-describedby="payPresetSummary payPresetHint">
+        <span id="stripeCheckoutLabel">Checkout — 15 Min Consult</span>
         <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" aria-hidden="true">
           <path d="M5 12h14M12 5l7 7-7 7"/>
         </svg>
       </a>
-      <p class="pay-trust-note">On supported devices, Apple Pay or Google Pay will appear automatically on the Stripe page.</p>
+      <p class="pay-trust-note" id="payPresetHint">For presets above $50, open the secure checkout and tap Change amount on Stripe if you need to match the suggested total.</p>
     </div>
 
     <button class="pay-method-btn pay-method-btn--bitcoin" id="bitcoinBtn" aria-label="Pay with Bitcoin">
@@ -443,7 +476,7 @@
         </svg>
         <span style="font-weight:700;font-size:1.1rem">Bitcoin</span>
       </span>
-      <span class="pay-method-btn__sub">Send BTC directly to my wallet</span>
+      <span class="pay-method-btn__sub" id="bitcoinBtnSub">Send BTC directly to my wallet for the selected service</span>
     </button>
   </div>
 </div>
@@ -566,12 +599,65 @@
     const payCloseBtn = document.getElementById('payModalClose');
 
     const bitcoinBtn = document.getElementById('bitcoinBtn');
+    const bitcoinBtnSub = document.getElementById('bitcoinBtnSub');
     const btcModal = document.getElementById('btcModal');
     const btcCloseBtn = document.getElementById('btcModalClose');
     const btcBackBtn = document.getElementById('btcBack');
     const btcCopyBtn = document.getElementById('btcCopy');
     const btcCopyLabel = document.getElementById('btcCopyLabel');
     const btcAddressEl = document.getElementById('btcAddress');
+    const btcRequestedAmount = document.getElementById('btcRequestedAmount');
+
+    const stripeCheckoutBtn = document.getElementById('stripeCheckoutBtn');
+    const stripeCheckoutLabel = document.getElementById('stripeCheckoutLabel');
+    const payPresetSummary = document.getElementById('payPresetSummary');
+    const payPresetHint = document.getElementById('payPresetHint');
+    const paymentPresetButtons = Array.from(document.querySelectorAll('[data-payment-preset]'));
+
+    function updatePaymentPreset(selectedButton) {
+      if (!selectedButton) return;
+
+      paymentPresetButtons.forEach(button => {
+        button.classList.toggle('is-selected', button === selectedButton);
+      });
+
+      const { paymentPreset, presetLabel, presetAmount } = selectedButton.dataset;
+      const suggestedAmount = presetAmount === 'Flexible'
+        ? 'flexible amount'
+        : `suggested payment ${presetAmount}`;
+
+      payPresetSummary.textContent = `Selected service: ${presetLabel} · ${suggestedAmount}`;
+      stripeCheckoutLabel.textContent = paymentPreset === 'custom-payment'
+        ? 'Continue to secure checkout'
+        : `Checkout — ${presetLabel}`;
+
+      if (paymentPreset === '15-min-consult') {
+        payPresetHint.textContent = 'The secure hosted checkout opens at the verified live payment flow for the fastest payment handoff.';
+      } else if (paymentPreset === 'custom-payment') {
+        payPresetHint.textContent = 'Use Custom Payment for deposits, invoice balances, or a number you already discussed before opening Stripe.';
+      } else {
+        payPresetHint.textContent = `Stripe opens with the same secure hosted checkout. If needed, tap Change amount on the Stripe page to match ${presetAmount}.`;
+      }
+
+      bitcoinBtnSub.textContent = paymentPreset === 'custom-payment'
+        ? 'Send BTC directly to my wallet for a custom amount'
+        : `Send BTC directly to my wallet for ${presetLabel.toLowerCase()}`;
+
+      btcRequestedAmount.hidden = false;
+      btcRequestedAmount.textContent = paymentPreset === 'custom-payment'
+        ? 'Selected service: Custom Payment · Amount handled directly'
+        : `Selected service: ${presetLabel} · Suggested payment ${presetAmount}`;
+
+      stripeCheckoutBtn.dataset.selectedPreset = paymentPreset;
+      stripeCheckoutBtn.dataset.selectedLabel = presetLabel;
+      stripeCheckoutBtn.dataset.selectedAmount = presetAmount;
+    }
+
+    paymentPresetButtons.forEach(button => {
+      button.addEventListener('click', () => updatePaymentPreset(button));
+    });
+
+    updatePaymentPreset(paymentPresetButtons.find(button => button.classList.contains('is-selected')) || paymentPresetButtons[0]);
 
     function openModal(el) {
       el.classList.add('open');

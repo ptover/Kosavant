@@ -36,6 +36,14 @@ test('payment modal explains that clients enter the agreed amount on Stripe chec
   assert.match(indexHtml, /wallet options appear automatically on supported devices/i);
 });
 
+test('payment modal includes a premium service summary card and method badges', () => {
+  assert.match(indexHtml, /id="payServiceLabel"/);
+  assert.match(indexHtml, /id="payServiceAmount"/);
+  assert.match(indexHtml, />\s*Fastest\s*</i);
+  assert.match(indexHtml, />\s*Tap to pay\s*</i);
+  assert.match(indexHtml, />\s*Crypto\s*</i);
+});
+
 test('site ships a real privacy policy page for checkout and feedback trust', () => {
   assert.match(indexHtml, /href="https:\/\/kosavant\.com\/privacy-policy\.html"/);
   assert.equal(fs.existsSync(privacyPolicyPath), true);

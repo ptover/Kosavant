@@ -418,10 +418,31 @@
     </div>
 
     <div class="pay-trust-panel">
-      <span class="pay-trust-badge">Secure Stripe checkout</span>
-      <h3 class="pay-trust-title">Apple Pay, Google Pay, Cash App, bank transfer, and cards.</h3>
-      <p class="pay-trust-copy">Checkout is hosted by Stripe so the wallet options show up only when the customer’s browser and device support them. That gives clients the fastest working payment flow instead of broken wallet prompts.</p>
-      <p class="pay-trust-copy">Enter the agreed amount on Stripe checkout after it opens, then finish with Apple Pay, Google Pay, Cash App Pay, bank transfer, or card when those options are available on the client’s device.</p>
+      <div class="pay-modal-hero">
+        <div class="pay-hero-copy">
+          <span class="pay-trust-badge">Secure Stripe checkout</span>
+          <h3 class="pay-trust-title">Apple Pay, Google Pay, Cash App, bank transfer, and cards.</h3>
+          <p class="pay-trust-copy">Checkout is hosted by Stripe so the wallet options show up only when the customer’s browser and device support them. That gives clients the fastest working payment flow instead of broken wallet prompts.</p>
+          <p class="pay-trust-copy">Enter the agreed amount on Stripe checkout after it opens, then finish with Apple Pay, Google Pay, Cash App Pay, bank transfer, or card when those options are available on the client’s device.</p>
+          <div class="pay-signal-row" aria-label="Checkout trust signals">
+            <span class="pay-signal-pill">Encrypted</span>
+            <span class="pay-signal-pill">Instant wallet options</span>
+            <span class="pay-signal-pill">No account required</span>
+          </div>
+        </div>
+
+        <aside class="pay-summary-card" aria-live="polite">
+          <p class="pay-summary-card__eyebrow">Selected service</p>
+          <h4 class="pay-summary-card__title" id="payServiceLabel">15 Min Consult</h4>
+          <p class="pay-summary-card__amount" id="payServiceAmount">$50</p>
+          <p class="pay-summary-card__note" id="payServiceNote">Enter $50 on Stripe checkout</p>
+          <div class="pay-summary-card__meta">
+            <span>Premium guidance</span>
+            <span>Fastest path to payment</span>
+          </div>
+        </aside>
+      </div>
+
       <ul class="pay-trust-list">
         <li>Hosted on Stripe for the most reliable checkout experience</li>
         <li>Apple Pay and Google Pay appear automatically on supported devices</li>
@@ -462,24 +483,52 @@
 
       <div class="pay-method-grid" aria-label="Payment methods">
         <a class="pay-method-btn pay-method-btn--apple" id="applePayBtn" href="https://buy.stripe.com/fZu4gyaCyaqqb9E7PlbAs00" target="_blank" rel="noopener noreferrer" aria-describedby="payPresetSummary payPresetHint">
-          <span class="pay-method-btn__title">Apple Pay</span>
+          <span class="pay-method-btn__badge">Fastest</span>
+          <span class="pay-method-btn__brand">
+            <span class="pay-method-btn__icon pay-method-btn__icon--apple" aria-hidden="true">
+              <svg width="22" height="22" viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+                <path d="M15.17 1.36c.04 1.02-.31 1.98-.95 2.71-.68.78-1.78 1.38-2.81 1.3-.14-.99.32-2.02.93-2.69.67-.77 1.82-1.32 2.83-1.32zm3.55 16.22c-.45 1.03-.99 1.98-1.63 2.86-.88 1.21-1.79 2.41-3.2 2.44-1.38.03-1.82-.82-3.39-.82s-2.07.79-3.37.85c-1.36.05-2.4-1.35-3.29-2.56C2.03 17.88 1 13.91 2.9 10.64c.95-1.62 2.66-2.64 4.5-2.67 1.34-.03 2.61.9 3.39.9.78 0 2.25-1.11 3.79-.95.65.03 2.49.26 3.67 1.98-.09.06-2.19 1.28-2.16 3.82.03 3.02 2.65 4.03 2.68 4.05z"/>
+              </svg>
+            </span>
+            <span class="pay-method-btn__title">Apple Pay</span>
+          </span>
           <span class="pay-method-btn__sub" id="applePayBtnSub">Open secure checkout for 15 Min Consult on supported Apple devices</span>
+          <span class="pay-method-btn__meta">Face ID / Touch ID · Instant checkout</span>
+          <span class="pay-method-btn__arrow" aria-hidden="true">→</span>
         </a>
 
         <a class="pay-method-btn pay-method-btn--google" id="gpayBtn" href="https://buy.stripe.com/fZu4gyaCyaqqb9E7PlbAs00" target="_blank" rel="noopener noreferrer" aria-describedby="payPresetSummary payPresetHint">
-          <span class="pay-method-btn__title">Google Pay</span>
+          <span class="pay-method-btn__badge">Tap to pay</span>
+          <span class="pay-method-btn__brand">
+            <span class="pay-method-btn__icon pay-method-btn__icon--google" aria-hidden="true">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+                <path d="M21.81 12.23c0-.72-.06-1.25-.19-1.81H12v3.42h5.64c-.11.85-.72 2.13-2.07 2.99l-.02.11 3 2.32.21.02c1.94-1.79 3.05-4.42 3.05-7.05z" fill="#4285F4"/>
+                <path d="M12 22c2.76 0 5.08-.9 6.77-2.45l-3.22-2.49c-.86.6-2.01 1.02-3.55 1.02-2.7 0-4.98-1.79-5.79-4.27l-.1.01-3.12 2.41-.03.09C4.64 19.63 8.04 22 12 22z" fill="#34A853"/>
+                <path d="M6.21 13.81A5.98 5.98 0 0 1 5.87 12c0-.63.12-1.24.32-1.81l-.01-.12-3.15-2.45-.1.05A9.99 9.99 0 0 0 2 12c0 1.6.38 3.11 1.05 4.44l3.16-2.63z" fill="#FBBC05"/>
+                <path d="M12 5.92c1.94 0 3.24.84 3.98 1.54l2.9-2.83C17.07 2.95 14.76 2 12 2 8.04 2 4.64 4.37 3.05 7.67l3.26 2.52C7.02 7.71 9.3 5.92 12 5.92z" fill="#EA4335"/>
+              </svg>
+            </span>
+            <span class="pay-method-btn__title">Google Pay</span>
+          </span>
           <span class="pay-method-btn__sub" id="gpayBtnSub">Open secure checkout for 15 Min Consult on supported Google Pay devices</span>
+          <span class="pay-method-btn__meta">Saved cards · One-tap on supported devices</span>
+          <span class="pay-method-btn__arrow" aria-hidden="true">→</span>
         </a>
 
         <button class="pay-method-btn pay-method-btn--bitcoin" id="bitcoinBtn" aria-label="Pay with Bitcoin">
-          <span class="bitcoin-wordmark" aria-hidden="true">
-            <svg width="28" height="28" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-              <circle cx="16" cy="16" r="16" fill="#F7931A"/>
-              <path d="M22.9 13.9c.3-2.1-1.3-3.2-3.5-3.9l.7-2.9-1.7-.4-.7 2.8c-.4-.1-.9-.2-1.4-.3l.7-2.9-1.7-.4-.7 2.9c-.4-.1-.7-.2-1-.2l-2.3-.6-.4 1.8s1.3.3 1.2.3c.7.2.8.7.8 1l-.8 3.3c0 0 .1 0 .1.1h-.1l-1.1 4.5c-.1.2-.3.5-.8.4.0 0-1.2-.3-1.2-.3l-.8 1.9 2.2.6c.4.1.8.2 1.2.3l-.7 2.9 1.7.4.7-2.9c.5.1 1 .2 1.4.4l-.7 2.9 1.7.4.7-2.9c2.9.5 5 .3 5.9-2.3.7-2.1-.0-3.3-1.5-4.1 1.1-.3 1.9-1 2.1-2.5zm-3.8 5.3c-.5 2.1-3.9 1-5 .7l.9-3.6c1.1.3 4.6.8 4.1 2.9zm.5-5.3c-.5 1.9-3.3 1-4.3.7l.8-3.2c.9.2 3.9.7 3.5 2.5z" fill="white"/>
-            </svg>
-            <span style="font-weight:700;font-size:1.1rem">Bitcoin</span>
+          <span class="pay-method-btn__badge">Crypto</span>
+          <span class="pay-method-btn__brand bitcoin-wordmark">
+            <span class="pay-method-btn__icon pay-method-btn__icon--bitcoin" aria-hidden="true">
+              <svg width="28" height="28" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+                <circle cx="16" cy="16" r="16" fill="#F7931A"/>
+                <path d="M22.9 13.9c.3-2.1-1.3-3.2-3.5-3.9l.7-2.9-1.7-.4-.7 2.8c-.4-.1-.9-.2-1.4-.3l.7-2.9-1.7-.4-.7 2.9c-.4-.1-.7-.2-1-.2l-2.3-.6-.4 1.8s1.3.3 1.2.3c.7.2.8.7.8 1l-.8 3.3c0 0 .1 0 .1.1h-.1l-1.1 4.5c-.1.2-.3.5-.8.4.0 0-1.2-.3-1.2-.3l-.8 1.9 2.2.6c.4.1.8.2 1.2.3l-.7 2.9 1.7.4.7-2.9c.5.1 1 .2 1.4.4l-.7 2.9 1.7.4.7-2.9c2.9.5 5 .3 5.9-2.3.7-2.1-.0-3.3-1.5-4.1 1.1-.3 1.9-1 2.1-2.5zm-3.8 5.3c-.5 2.1-3.9 1-5 .7l.9-3.6c1.1.3 4.6.8 4.1 2.9zm.5-5.3c-.5 1.9-3.3 1-4.3.7l.8-3.2c.9.2 3.9.7 3.5 2.5z" fill="white"/>
+              </svg>
+            </span>
+            <span class="pay-method-btn__title">Bitcoin</span>
           </span>
           <span class="pay-method-btn__sub" id="bitcoinBtnSub">Send BTC directly to my wallet for the selected service</span>
+          <span class="pay-method-btn__meta">Wallet + QR code · Send when you’re ready</span>
+          <span class="pay-method-btn__arrow" aria-hidden="true">→</span>
         </button>
       </div>
 
@@ -620,6 +669,9 @@
     const gpayBtnSub = document.getElementById('gpayBtnSub');
     const payPresetSummary = document.getElementById('payPresetSummary');
     const payPresetHint = document.getElementById('payPresetHint');
+    const payServiceLabel = document.getElementById('payServiceLabel');
+    const payServiceAmount = document.getElementById('payServiceAmount');
+    const payServiceNote = document.getElementById('payServiceNote');
     const paymentPresetButtons = Array.from(document.querySelectorAll('[data-payment-preset]'));
 
     function updatePaymentPreset(selectedButton) {
@@ -630,11 +682,14 @@
       });
 
       const { paymentPreset, presetLabel, presetAmount } = selectedButton.dataset;
-      const suggestedAmount = presetAmount === 'Flexible'
-        ? 'enter your agreed amount on Stripe checkout'
-        : `enter ${presetAmount} on Stripe checkout`;
+      const summaryInstruction = presetAmount === 'Flexible'
+        ? 'Enter your agreed amount on Stripe checkout'
+        : `Enter ${presetAmount} on Stripe checkout`;
 
-      payPresetSummary.textContent = `Selected service: ${presetLabel} · ${suggestedAmount}`;
+      payPresetSummary.textContent = `Selected service: ${presetLabel} · ${summaryInstruction}`;
+      payServiceLabel.textContent = presetLabel;
+      payServiceAmount.textContent = presetAmount;
+      payServiceNote.textContent = summaryInstruction;
       applePayBtnSub.textContent = paymentPreset === 'custom-payment'
         ? 'Open secure checkout and enter your agreed amount on supported Apple devices'
         : `Open secure checkout for ${presetLabel} and enter ${presetAmount} on supported Apple devices`;

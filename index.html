@@ -19,8 +19,6 @@
   <link rel="preconnect" href="https://api.fontshare.com" />
   <link href="https://api.fontshare.com/v2/css?f[]=clash-display@400,500,600,700&f[]=satoshi@300,400,500,700&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="style.css" />
-  <!-- Stripe.js for Google Pay -->
-  <script src="https://js.stripe.com/v3/" async></script>
 </head>
 <body>
 
@@ -184,7 +182,7 @@
           </span>
           <span class="link-card__body">
             <span class="link-card__label">Pay Me</span>
-            <span class="link-card__sub">Apple Pay · Google Pay · Bitcoin</span>
+            <span class="link-card__sub">Secure checkout · Bitcoin</span>
           </span>
           <span class="link-card__arrow" aria-hidden="true">→</span>
         </button>
@@ -281,6 +279,110 @@
     </div>
   </section>
 
+<!-- ═══════════════════════════════════
+     CLIENT UPDATES + FEEDBACK
+═══════════════════════════════════ -->
+<section class="updates-section" id="client-updates">
+  <img src="pto-logo-white.png" class="section-logo-bg section-logo-bg--tl" aria-hidden="true" alt="" />
+  <img src="pto-logo-white.png" class="section-logo-bg section-logo-bg--br" aria-hidden="true" alt="" />
+  <div class="container">
+    <p class="section-eyebrow">Proof</p>
+    <h2 class="section-title">Client Updates &amp; Feedback</h2>
+    <p class="updates-intro">Real wins, current momentum, and a direct place for clients to leave feedback after working with KO Savant.</p>
+
+    <div class="updates-layout">
+      <div class="updates-feed" aria-label="Recent client updates">
+        <article class="update-card">
+          <div class="update-card__meta">
+            <span class="update-card__badge">Business Strategy</span>
+            <time datetime="2025-05">May ’25</time>
+          </div>
+          <h3 class="update-card__title">Brand audit turned into a clear launch plan.</h3>
+          <p class="update-card__text">A startup founder came in needing structure, positioning, and a cleaner offer. After the strategy session, they left with a launch roadmap, offer stack, and next-step priorities they could execute on immediately.</p>
+        </article>
+
+        <article class="update-card">
+          <div class="update-card__meta">
+            <span class="update-card__badge">Fashion Direction</span>
+            <time datetime="2025-04">Apr ’25</time>
+          </div>
+          <h3 class="update-card__title">Collection messaging got sharper and easier to sell.</h3>
+          <p class="update-card__text">Client feedback after a fashion consult pointed to clearer visuals, better product presentation, and stronger drop messaging — the kind of polish that helps customers trust the brand faster.</p>
+        </article>
+
+        <article class="update-card">
+          <div class="update-card__meta">
+            <span class="update-card__badge">Mentorship</span>
+            <time datetime="2025-03">Mar ’25</time>
+          </div>
+          <h3 class="update-card__title">Repeat sessions keep the momentum going.</h3>
+          <p class="update-card__text">Clients keep coming back for follow-up help on execution, brand decisions, and business clarity. That consistency matters — it shows the advice is useful after the first conversation, not just during it.</p>
+        </article>
+      </div>
+
+      <aside class="feedback-card" aria-labelledby="feedbackTitle">
+        <p class="feedback-card__eyebrow">Leave a review</p>
+        <h3 class="feedback-card__title" id="feedbackTitle">Share your feedback or send a client update.</h3>
+        <p class="feedback-card__copy">If we’ve worked together, send a quick review or update here. Reviews are screened before being featured publicly so the site stays clean and credible.</p>
+
+        <form action="https://formsubmit.co/Les6nYT5nCPRueI1jlTNA" method="POST" class="feedback-form" id="feedbackForm">
+          <input type="hidden" name="_subject" value="New Client Feedback — KO Savant" />
+          <input type="hidden" name="_next" value="https://kosavant.com/thank-you.html?source=feedback" />
+          <input type="hidden" name="_captcha" value="false" />
+          <input type="hidden" name="form_name" value="Client Feedback" />
+
+          <div class="form-field">
+            <label for="fb-name">Full Name</label>
+            <input type="text" id="fb-name" name="name" placeholder="Your name" required autocomplete="name" />
+          </div>
+          <div class="form-field">
+            <label for="fb-email">Email Address</label>
+            <input type="email" id="fb-email" name="email" placeholder="you@example.com" required autocomplete="email" />
+          </div>
+          <div class="form-field">
+            <label for="fb-brand">Brand / Business</label>
+            <input type="text" id="fb-brand" name="brand" placeholder="Brand, business, or role" autocomplete="organization" />
+          </div>
+          <div class="form-field">
+            <label for="fb-service">What did we work on?</label>
+            <select id="fb-service" name="service" required>
+              <option value="" disabled selected>Select one…</option>
+              <option value="Business Strategy">Business Strategy</option>
+              <option value="Fashion & Brand">Fashion &amp; Brand</option>
+              <option value="Startup Mentorship">Startup Mentorship</option>
+              <option value="Other">Other</option>
+            </select>
+          </div>
+          <div class="form-field">
+            <label for="fb-rating">Rating</label>
+            <select id="fb-rating" name="rating" required>
+              <option value="" disabled selected>Select one…</option>
+              <option value="5 stars">★★★★★ — 5 stars</option>
+              <option value="4 stars">★★★★☆ — 4 stars</option>
+              <option value="3 stars">★★★☆☆ — 3 stars</option>
+            </select>
+          </div>
+          <div class="form-field">
+            <label for="fb-message">Feedback or update</label>
+            <textarea id="fb-message" name="message" placeholder="What changed after working together? What would you tell future clients?" required></textarea>
+          </div>
+          <label class="consent-line" for="fb-share">
+            <input type="checkbox" id="fb-share" name="permission_to_share" value="Yes, you can feature this feedback on the site" />
+            <span>You can feature this feedback on the site.</span>
+          </label>
+
+          <button type="submit" class="btn btn--primary btn--block">
+            Submit feedback
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" aria-hidden="true">
+              <path d="M5 12h14M12 5l7 7-7 7"/>
+            </svg>
+          </button>
+        </form>
+      </aside>
+    </div>
+  </div>
+</section>
+
   <!-- ═══════════════════════════════════
        FOOTER
   ═══════════════════════════════════ -->
@@ -302,67 +404,51 @@
     </div>
   </footer>
 
-  <!-- ═══════════════════════════════════
-       PAY MODAL
-  ═══════════════════════════════════ -->
-  <div class="modal-overlay" id="payModal" role="dialog" aria-modal="true" aria-labelledby="payModalTitle">
-    <div class="modal pay-modal">
-      <div class="modal__header">
-        <div>
-          <h2 class="modal__title" id="payModalTitle">Pay KO Savant</h2>
-          <p class="modal__sub">Choose your preferred payment method</p>
-        </div>
-        <button class="modal__close" id="payModalClose" aria-label="Close">&times;</button>
+<!-- ═══════════════════════════════════
+     PAY MODAL
+═══════════════════════════════════ -->
+<div class="modal-overlay" id="payModal" role="dialog" aria-modal="true" aria-labelledby="payModalTitle">
+  <div class="modal pay-modal">
+    <div class="modal__header">
+      <div>
+        <h2 class="modal__title" id="payModalTitle">Pay KO Savant</h2>
+        <p class="modal__sub">Use the secure checkout that actually works across devices.</p>
       </div>
-
-      <!-- Amount input -->
-      <div class="pay-amount-wrap">
-        <span class="pay-amount-symbol">$</span>
-        <input class="pay-amount-input" id="payAmount" type="number" min="1" step="1"
-          placeholder="Enter amount" inputmode="decimal" aria-label="Payment amount" />
-        <span class="pay-amount-currency">USD</span>
-      </div>
-
-      <!-- Payment buttons — always visible, enhanced by Stripe where supported -->
-      <div class="pay-buttons-row">
-        <!-- Apple Pay -->
-        <button class="pay-native-btn pay-native-btn--apple" id="applePayBtn" aria-label="Pay with Apple Pay">
-          <svg width="52" height="22" viewBox="0 0 165 42" fill="white" aria-hidden="true">
-            <path d="M31.5 8.7c1.6-2 2.7-4.8 2.4-7.5-2.3.1-5.1 1.5-6.7 3.5-1.5 1.7-2.7 4.5-2.4 7.1 2.6.2 5.2-1.3 6.7-3.1z"/>
-            <path d="M33.8 12.7c-3.7-.2-6.9 2.1-8.6 2.1-1.8 0-4.5-2-7.5-1.9-3.8.1-7.4 2.2-9.3 5.7-4 6.9-1 17.1 2.8 22.7 1.9 2.8 4.2 5.8 7.2 5.7 2.8-.1 3.9-1.8 7.3-1.8s4.4 1.8 7.5 1.7c3.1-.1 5.1-2.8 7-5.6 2.2-3.2 3.1-6.3 3.1-6.5-.1-.1-6-2.3-6-9.1-.1-5.7 4.6-8.4 4.8-8.5-2.7-3.9-6.8-4.4-8.3-4.5z"/>
-            <text x="55" y="32" font-family="-apple-system,sans-serif" font-size="24" font-weight="500" fill="white">Pay</text>
-          </svg>
-        </button>
-
-        <!-- Google Pay — Stripe renders real button with card icons -->
-        <div id="googlePayMount" class="pay-native-btn pay-native-btn--google" style="padding:0;overflow:hidden">
-          <!-- Stripe mounts here — fallback shows if unavailable -->
-          <div id="googlePayStripe" style="height:56px"></div>
-          <button id="googlePayBtn" class="pay-gpay-fallback" style="display:none" aria-label="Pay with Google Pay">
-            <svg width="58" height="24" viewBox="0 0 80 34" fill="none" aria-hidden="true">
-              <text x="0" y="26" font-size="26" font-family="'Google Sans',Roboto,sans-serif" font-weight="500">
-                <tspan fill="#4285F4">G</tspan><tspan fill="#EA4335">o</tspan><tspan fill="#FBBC05">o</tspan><tspan fill="#4285F4">g</tspan><tspan fill="#34A853">l</tspan><tspan fill="#EA4335">e </tspan><tspan fill="white">Pay</tspan>
-              </text>
-            </svg>
-          </button>
-        </div>
-      </div>
-
-      <!-- Bitcoin -->
-      <button class="pay-method-btn pay-method-btn--bitcoin" id="bitcoinBtn" aria-label="Pay with Bitcoin">
-        <span class="bitcoin-wordmark" aria-hidden="true">
-          <svg width="28" height="28" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-            <circle cx="16" cy="16" r="16" fill="#F7931A"/>
-            <path d="M22.9 13.9c.3-2.1-1.3-3.2-3.5-3.9l.7-2.9-1.7-.4-.7 2.8c-.4-.1-.9-.2-1.4-.3l.7-2.9-1.7-.4-.7 2.9c-.4-.1-.7-.2-1-.2l-2.3-.6-.4 1.8s1.3.3 1.2.3c.7.2.8.7.8 1l-.8 3.3c0 0 .1 0 .1.1h-.1l-1.1 4.5c-.1.2-.3.5-.8.4.0 0-1.2-.3-1.2-.3l-.8 1.9 2.2.6c.4.1.8.2 1.2.3l-.7 2.9 1.7.4.7-2.9c.5.1 1 .2 1.4.4l-.7 2.9 1.7.4.7-2.9c2.9.5 5 .3 5.9-2.3.7-2.1-.0-3.3-1.5-4.1 1.1-.3 1.9-1 2.1-2.5zm-3.8 5.3c-.5 2.1-3.9 1-5 .7l.9-3.6c1.1.3 4.6.8 4.1 2.9zm.5-5.3c-.5 1.9-3.3 1-4.3.7l.8-3.2c.9.2 3.9.7 3.5 2.5z" fill="white"/>
-          </svg>
-          <span style="font-weight:700;font-size:1.1rem">Bitcoin</span>
-        </span>
-        <span class="pay-method-btn__sub">Send BTC directly to my wallet</span>
-      </button>
+      <button class="modal__close" id="payModalClose" aria-label="Close">&times;</button>
     </div>
-  </div>
 
-  <!-- Bitcoin Address Modal -->
+    <div class="pay-trust-panel">
+      <span class="pay-trust-badge">Secure Stripe checkout</span>
+      <h3 class="pay-trust-title">Apple Pay, Google Pay, Cash App, bank transfer, and cards.</h3>
+      <p class="pay-trust-copy">Checkout is hosted by Stripe so the wallet options show up only when the customer’s browser and device support them. That gives clients the fastest working payment flow instead of broken wallet prompts.</p>
+      <ul class="pay-trust-list">
+        <li>Hosted on Stripe for the most reliable checkout experience</li>
+        <li>Apple Pay and Google Pay appear automatically on supported devices</li>
+        <li>Cash App Pay, bank transfer, and cards are available in the same flow</li>
+      </ul>
+      <a class="btn btn--primary btn--block pay-checkout-btn" id="stripeCheckoutBtn" href="https://buy.stripe.com/fZu4gyaCyaqqb9E7PlbAs00" target="_blank" rel="noopener noreferrer">
+        Continue to secure checkout
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" aria-hidden="true">
+          <path d="M5 12h14M12 5l7 7-7 7"/>
+        </svg>
+      </a>
+      <p class="pay-trust-note">On supported devices, Apple Pay or Google Pay will appear automatically on the Stripe page.</p>
+    </div>
+
+    <button class="pay-method-btn pay-method-btn--bitcoin" id="bitcoinBtn" aria-label="Pay with Bitcoin">
+      <span class="bitcoin-wordmark" aria-hidden="true">
+        <svg width="28" height="28" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+          <circle cx="16" cy="16" r="16" fill="#F7931A"/>
+          <path d="M22.9 13.9c.3-2.1-1.3-3.2-3.5-3.9l.7-2.9-1.7-.4-.7 2.8c-.4-.1-.9-.2-1.4-.3l.7-2.9-1.7-.4-.7 2.9c-.4-.1-.7-.2-1-.2l-2.3-.6-.4 1.8s1.3.3 1.2.3c.7.2.8.7.8 1l-.8 3.3c0 0 .1 0 .1.1h-.1l-1.1 4.5c-.1.2-.3.5-.8.4.0 0-1.2-.3-1.2-.3l-.8 1.9 2.2.6c.4.1.8.2 1.2.3l-.7 2.9 1.7.4.7-2.9c.5.1 1 .2 1.4.4l-.7 2.9 1.7.4.7-2.9c2.9.5 5 .3 5.9-2.3.7-2.1-.0-3.3-1.5-4.1 1.1-.3 1.9-1 2.1-2.5zm-3.8 5.3c-.5 2.1-3.9 1-5 .7l.9-3.6c1.1.3 4.6.8 4.1 2.9zm.5-5.3c-.5 1.9-3.3 1-4.3.7l.8-3.2c.9.2 3.9.7 3.5 2.5z" fill="white"/>
+        </svg>
+        <span style="font-weight:700;font-size:1.1rem">Bitcoin</span>
+      </span>
+      <span class="pay-method-btn__sub">Send BTC directly to my wallet</span>
+    </button>
+  </div>
+</div>
+
+<!-- Bitcoin Address Modal -->
   <div class="modal-overlay" id="btcModal" role="dialog" aria-modal="true" aria-labelledby="btcModalTitle">
     <div class="modal btc-modal">
       <div class="modal__header">
@@ -387,7 +473,7 @@
       <div class="btc-address-wrap">
         <p class="btc-address-label">Wallet Address</p>
         <div class="btc-address-row">
-          <code class="btc-address" id="btcAddress">YOUR_BTC_ADDRESS_HERE</code>
+          <code class="btc-address" id="btcAddress">bc1qnqx9kaqg7xnghfc7t6vcms0skxz5thyu37xc5a</code>
           <button class="btc-copy-btn" id="btcCopy" aria-label="Copy Bitcoin address">
             <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true">
               <rect x="9" y="9" width="13" height="13" rx="2"/>
@@ -396,6 +482,7 @@
             <span id="btcCopyLabel">Copy</span>
           </button>
         </div>
+        <p class="btc-requested-amount" id="btcRequestedAmount" hidden></p>
         <p class="btc-note">⚠️ Double-check the address before sending. Bitcoin transactions are irreversible.</p>
       </div>
 
@@ -424,7 +511,7 @@
       >
         <!-- FormSubmit config -->
         <input type="hidden" name="_subject" value="New Consultation Request — KO Savant" />
-        <input type="hidden" name="_next" value="https://kosavant.com/thank-you.html" />
+        <input type="hidden" name="_next" value="https://kosavant.com/thank-you.html?source=booking" />
         <input type="hidden" name="_captcha" value="false" />
 
         <div class="form-field">
@@ -468,22 +555,29 @@
   </a>
 
   <script>
-    // ─────────────────────────────────────────
-    const BTC_ADDRESS    = 'bc1qnqx9kaqg7xnghfc7t6vcms0skxz5thyu37xc5a';
-    const STRIPE_PK      = 'pk_live_o5rkemdfgo4Jy4Y5TIu8bTlU';
-    const GPAY_MERCHANT  = 'BCR2DN5TU3RYFDC4';
-    const STRIPE_PAY_LINK = 'https://buy.stripe.com/fZu4gyaCyaqqb9E7PlbAs00';
-    // ─────────────────────────────────────────
+    const BTC_ADDRESS = 'bc1qnqx9kaqg7xnghfc7t6vcms0skxz5thyu37xc5a';
 
-    // ── Booking Modal ─────────────────────────
-    const modal    = document.getElementById('bookingModal');
-    const bookBtn  = document.getElementById('bookBtn');
+    const modal = document.getElementById('bookingModal');
+    const bookBtn = document.getElementById('bookBtn');
     const closeBtn = document.getElementById('modalClose');
+
+    const payModal = document.getElementById('payModal');
+    const payBtn = document.getElementById('payBtn');
+    const payCloseBtn = document.getElementById('payModalClose');
+
+    const bitcoinBtn = document.getElementById('bitcoinBtn');
+    const btcModal = document.getElementById('btcModal');
+    const btcCloseBtn = document.getElementById('btcModalClose');
+    const btcBackBtn = document.getElementById('btcBack');
+    const btcCopyBtn = document.getElementById('btcCopy');
+    const btcCopyLabel = document.getElementById('btcCopyLabel');
+    const btcAddressEl = document.getElementById('btcAddress');
 
     function openModal(el) {
       el.classList.add('open');
       document.body.style.overflow = 'hidden';
     }
+
     function closeModal(el, returnFocus) {
       el.classList.remove('open');
       document.body.style.overflow = '';
@@ -494,158 +588,14 @@
     closeBtn.addEventListener('click', () => closeModal(modal, bookBtn));
     modal.addEventListener('click', e => { if (e.target === modal) closeModal(modal, bookBtn); });
 
-    // ── Pay Modal ─────────────────────────────
-    const payModal      = document.getElementById('payModal');
-    const payBtn        = document.getElementById('payBtn');
-    const payCloseBtn   = document.getElementById('payModalClose');
-    const applePayBtn   = document.getElementById('applePayBtn');
-    const googlePayBtn  = document.getElementById('googlePayBtn');
-    const bitcoinBtn    = document.getElementById('bitcoinBtn');
-    const btcModal      = document.getElementById('btcModal');
-    const btcCloseBtn   = document.getElementById('btcModalClose');
-    const btcBackBtn    = document.getElementById('btcBack');
-    const btcCopyBtn    = document.getElementById('btcCopy');
-    const btcCopyLabel  = document.getElementById('btcCopyLabel');
-    const btcAddressEl  = document.getElementById('btcAddress');
-
-    // payBtn click is handled in mountExpressCheckout section below
+    payBtn.addEventListener('click', () => openModal(payModal));
     payCloseBtn.addEventListener('click', () => closeModal(payModal, payBtn));
     payModal.addEventListener('click', e => { if (e.target === payModal) closeModal(payModal, payBtn); });
 
-    // ── Helpers ───────────────────────────────
-    function getAmountCents() {
-      const v = parseFloat(document.getElementById('payAmount').value);
-      return v > 0 ? Math.round(v * 100) : 0;
-    }
-    function requireAmount() {
-      const input = document.getElementById('payAmount');
-      const cents = getAmountCents();
-      if (cents === 0) {
-        input.focus();
-        input.classList.add('shake');
-        input.placeholder = 'Enter an amount first';
-        setTimeout(() => { input.classList.remove('shake'); input.placeholder='Enter amount'; }, 1800);
-        return false;
-      }
-      return true;
-    }
-    function stripeCheckout(cents) {
-      const url = cents > 0
-        ? `${STRIPE_PAY_LINK}?prefilled_amount=${cents}`
-        : STRIPE_PAY_LINK;
-      window.location.href = url;
-    }
-
-    // ── Payment Request (Apple Wallet + Google Pay native) ──────
-    // Pre-initialise as soon as modal opens so .show() is sync on click
-    let _pr = null;
-    let _hasApple = false;
-    let _hasGoogle = false;
-
-    async function initPaymentRequest() {
-      if (!window.Stripe || _pr) return;
-      try {
-        const stripe = Stripe(STRIPE_PK);
-        _pr = stripe.paymentRequest({
-          country: 'US',
-          currency: 'usd',
-          total: { label: 'KO Savant', amount: 100 },
-          requestPayerName: true,
-          requestPayerEmail: false,
-          requestShipping: false,
-        });
-        const result = await _pr.canMakePayment();
-        if (result) {
-          _hasApple  = result.applePay  === true;
-          _hasGoogle = result.googlePay === true;
-        }
-        _pr.on('paymentmethod', (ev) => {
-          ev.complete('success');
-          window.location.href = STRIPE_PAY_LINK;
-        });
-        _pr.on('cancel', () => openModal(payModal));
-      } catch(_) {}
-    }
-
-    // ── Mount real Stripe Google Pay button ───────────────
-    let _gpayMounted = false;
-
-    async function mountGooglePayButton() {
-      if (!window.Stripe || _gpayMounted) return;
-      try {
-        const stripe  = Stripe(STRIPE_PK);
-        const cents   = getAmountCents() || 100;
-        const pr      = stripe.paymentRequest({
-          country: 'US', currency: 'usd',
-          total: { label: 'KO Savant', amount: cents },
-          requestPayerName: true, requestShipping: false,
-        });
-
-        const elements = stripe.elements();
-        const prBtn    = elements.create('paymentRequestButton', {
-          paymentRequest: pr,
-          style: { paymentRequestButton: { theme: 'dark', height: '56px' } },
-        });
-
-        const result = await pr.canMakePayment();
-        if (result && result.googlePay) {
-          // Real Stripe Google Pay button with cards
-          document.getElementById('googlePayStripe').style.height = '56px';
-          prBtn.mount('#googlePayStripe');
-          _gpayMounted = true;
-
-          pr.on('paymentmethod', (ev) => {
-            ev.complete('success');
-            stripeCheckout(getAmountCents() || 100);
-          });
-          pr.on('cancel', () => openModal(payModal));
-
-          // Keep Apple Pay using separate instance
-          if (!_pr) { _pr = pr; _hasApple = result.applePay === true; _hasGoogle = true; }
-        } else {
-          // Not available — show fallback button
-          document.getElementById('googlePayStripe').style.display = 'none';
-          document.getElementById('googlePayBtn').style.display    = 'flex';
-        }
-      } catch(e) {
-        document.getElementById('googlePayStripe').style.display = 'none';
-        document.getElementById('googlePayBtn').style.display    = 'flex';
-      }
-    }
-
-    // Open modal + init everything
-    payBtn.addEventListener('click', () => {
-      openModal(payModal);
-      initPaymentRequest();      // for Apple Pay
-      mountGooglePayButton();    // for Google Pay (Stripe rendered)
-      setTimeout(() => document.getElementById('payAmount').focus(), 300);
-    });
-
-    // Apple Pay — opens Apple Wallet
-    document.getElementById('applePayBtn').addEventListener('click', () => {
-      if (!requireAmount()) return;
-      const cents = getAmountCents();
-      closeModal(payModal);
-      if (_pr && _hasApple) {
-        try { _pr.update({ total: { label: 'KO Savant', amount: cents } }); } catch(_) {}
-        _pr.show();
-      } else {
-        stripeCheckout(cents);
-      }
-    });
-
-    // Google Pay fallback button (when Stripe button not available)
-    document.getElementById('googlePayBtn').addEventListener('click', () => {
-      if (!requireAmount()) return;
-      stripeCheckout(getAmountCents());
-    });
-
-    // Bitcoin → show BTC modal
     bitcoinBtn.addEventListener('click', () => {
       closeModal(payModal);
       btcAddressEl.textContent = BTC_ADDRESS;
 
-      // Generate QR code once
       const qrEl = document.getElementById('btcQR');
       if (!qrEl.hasChildNodes()) {
         const qrUrl = `https://api.qrserver.com/v1/create-qr-code/?size=180x180&data=bitcoin:${encodeURIComponent(BTC_ADDRESS)}&color=f7931a&bgcolor=111111`;
@@ -664,7 +614,6 @@
     btcModal.addEventListener('click', e => { if (e.target === btcModal) closeModal(btcModal, payBtn); });
     btcBackBtn.addEventListener('click', () => { closeModal(btcModal); openModal(payModal); });
 
-    // Copy BTC address
     btcCopyBtn.addEventListener('click', async () => {
       try {
         await navigator.clipboard.writeText(BTC_ADDRESS);
@@ -675,7 +624,6 @@
           btcCopyBtn.style.color = '';
         }, 2000);
       } catch {
-        // Fallback for older browsers
         const ta = document.createElement('textarea');
         ta.value = BTC_ADDRESS;
         document.body.appendChild(ta);
@@ -687,7 +635,6 @@
       }
     });
 
-    // Global ESC handler
     document.addEventListener('keydown', e => {
       if (e.key === 'Escape') {
         [modal, payModal, btcModal].forEach(m => {
@@ -696,13 +643,11 @@
       }
     });
 
-    // ── Back to top ────────────────────────────
     const btt = document.getElementById('backToTop');
     window.addEventListener('scroll', () => {
       btt.classList.toggle('visible', window.scrollY > 450);
     }, { passive: true });
 
-    // ── Scroll-triggered fade-in ───────────────
     const observer = new IntersectionObserver((entries) => {
       entries.forEach(e => {
         if (e.isIntersecting) {
@@ -712,7 +657,7 @@
       });
     }, { threshold: 0.1, rootMargin: '0px 0px -40px 0px' });
 
-    document.querySelectorAll('.link-card, .testimonial-card, .pto-grid, .stat').forEach(el => {
+    document.querySelectorAll('.link-card, .testimonial-card, .update-card, .feedback-card, .pto-grid, .stat').forEach(el => {
       el.classList.add('fade-up');
       observer.observe(el);
     });

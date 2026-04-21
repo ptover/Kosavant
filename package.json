@@ -1,6 +1,9 @@
 {
   "name": "kosavant",
   "version": "1.0.0",
+  "scripts": {
+    "test": "node --test"
+  },
   "dependencies": {
     "stripe": "^14.0.0"
   }

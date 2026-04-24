@@ -193,44 +193,86 @@
   </section>
 
   <!-- ═══════════════════════════════════
-       PLAYTIMEZOVER
+       OFFERS
   ═══════════════════════════════════ -->
-  <section class="pto-section">
-    <!-- Logo watermarks blended into background -->
-    <img src="pto-logo-white.png" class="pto-logo-bg pto-logo-bg--center" aria-hidden="true" alt="" />
-    <img src="pto-logo-white.png" class="pto-logo-bg pto-logo-bg--right" aria-hidden="true" alt="" />
-
+  <section class="offers-section" id="offers">
     <div class="container">
-      <div class="pto-grid">
-        <div class="pto-content">
-          <p class="section-eyebrow">Official Clothing Line</p>
+      <p class="section-eyebrow">Start Here</p>
+      <h2 class="section-title">Choose Your Session</h2>
+      <p class="offers-intro">Pick the session that matches what you need right now. Then continue to secure checkout with the best payment path already explained for you.</p>
 
-          <!-- Est. California badge with logo -->
-          <div class="pto-origin-badge">
-            <img src="pto-logo-white.png" class="pto-origin-icon" aria-hidden="true" alt="" />
-            Est. California
+      <div class="offer-proof-strip" aria-label="Consulting trust points">
+        <article class="offer-proof-item">
+          <strong>5★ client feedback</strong>
+          <span>Trusted by founders, creatives, and growing brands</span>
+        </article>
+        <article class="offer-proof-item">
+          <strong>100+ clients served</strong>
+          <span>Clear direction, sharper offers, and better launch momentum</span>
+        </article>
+        <article class="offer-proof-item">
+          <strong>24-hour follow-up</strong>
+          <span>Fast next steps after payment so momentum stays high</span>
+        </article>
+      </div>
+
+      <div class="offers-grid" aria-label="Consulting offers">
+        <article class="offer-card offer-card--featured">
+          <div class="offer-card__top">
+            <p class="offer-card__eyebrow">Best for a fast answer</p>
+            <span class="offer-card__tag">Most Popular</span>
           </div>
+          <h3 class="offer-card__title">15 Min Consult</h3>
+          <p class="offer-card__price">$50</p>
+          <p class="offer-card__desc">Quick answer to one key issue.</p>
+          <ul class="offer-card__list">
+            <li>Fast clarity on one decision</li>
+            <li>Card and wallet checkout ready</li>
+          </ul>
+          <button class="btn btn--primary btn--block offer-card__button" type="button" data-open-payment-preset="15-min-consult">Choose this option</button>
+        </article>
 
-          <h2 class="pto-heading">PlayTimez<br/><span class="pto-heading--accent">Over</span></h2>
-          <p class="pto-body">Exclusive streetwear crafted for those who refuse to compromise. Bold designs that make a statement — built for the culture.</p>
-          <a href="https://playtimezoverclothing.com" class="btn btn--primary" target="_blank" rel="noopener noreferrer">
-            Shop the Collection
-            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" aria-hidden="true">
-              <path d="M5 12h14M12 5l7 7-7 7"/>
-            </svg>
-          </a>
-        </div>
-
-        <div class="pto-visual">
-          <div class="pto-card">
-            <div class="pto-badge">Premium</div>
-            <div class="pto-card__lines" aria-hidden="true">
-              <span></span><span></span><span></span>
-            </div>
-            <p class="pto-card__name">PlayTimezOver</p>
-            <p class="pto-card__tag">EST. CALIFORNIA</p>
+        <article class="offer-card">
+          <div class="offer-card__top">
+            <p class="offer-card__eyebrow">Best for deeper direction</p>
           </div>
-        </div>
+          <h3 class="offer-card__title">30 Min Consult</h3>
+          <p class="offer-card__price">$100</p>
+          <p class="offer-card__desc">Live strategy call with action steps.</p>
+          <ul class="offer-card__list">
+            <li>More room for questions and planning</li>
+            <li>Exact-amount invoice or PayPal path</li>
+          </ul>
+          <button class="btn btn--outline btn--block offer-card__button" type="button" data-open-payment-preset="30-min-consult">Choose this option</button>
+        </article>
+
+        <article class="offer-card">
+          <div class="offer-card__top">
+            <p class="offer-card__eyebrow">Best for a serious review</p>
+          </div>
+          <h3 class="offer-card__title">Brand Audit</h3>
+          <p class="offer-card__price">$250</p>
+          <p class="offer-card__desc">Detailed review of your offer, positioning, and site.</p>
+          <ul class="offer-card__list">
+            <li>Sharper messaging and clearer offer direction</li>
+            <li>Exact-amount invoice or PayPal path</li>
+          </ul>
+          <button class="btn btn--outline btn--block offer-card__button" type="button" data-open-payment-preset="brand-audit">Choose this option</button>
+        </article>
+
+        <article class="offer-card">
+          <div class="offer-card__top">
+            <p class="offer-card__eyebrow">Best for custom work</p>
+          </div>
+          <h3 class="offer-card__title">Custom Invoice / Agreed Amount</h3>
+          <p class="offer-card__price">Flexible</p>
+          <p class="offer-card__desc">For retainers, split payments, or approved custom totals.</p>
+          <ul class="offer-card__list">
+            <li>Use this when a number was already discussed</li>
+            <li>Invoice support built into the payment flow</li>
+          </ul>
+          <button class="btn btn--outline btn--block offer-card__button" type="button" data-open-payment-preset="custom-payment">Choose this option</button>
+        </article>
       </div>
     </div>
   </section>
@@ -385,6 +427,48 @@
 </section>
 
   <!-- ═══════════════════════════════════
+       PLAYTIMEZOVER
+  ═══════════════════════════════════ -->
+  <section class="pto-section">
+    <!-- Logo watermarks blended into background -->
+    <img src="pto-logo-white.png" class="pto-logo-bg pto-logo-bg--center" aria-hidden="true" alt="" />
+    <img src="pto-logo-white.png" class="pto-logo-bg pto-logo-bg--right" aria-hidden="true" alt="" />
+
+    <div class="container">
+      <div class="pto-grid">
+        <div class="pto-content">
+          <p class="section-eyebrow">Official Clothing Line</p>
+
+          <div class="pto-origin-badge">
+            <img src="pto-logo-white.png" class="pto-origin-icon" aria-hidden="true" alt="" />
+            Est. California
+          </div>
+
+          <h2 class="pto-heading">PlayTimez<br/><span class="pto-heading--accent">Over</span></h2>
+          <p class="pto-body">Exclusive streetwear crafted for those who refuse to compromise. Bold designs that make a statement — built for the culture.</p>
+          <a href="https://playtimezoverclothing.com" class="btn btn--primary" target="_blank" rel="noopener noreferrer">
+            Shop the Collection
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" aria-hidden="true">
+              <path d="M5 12h14M12 5l7 7-7 7"/>
+            </svg>
+          </a>
+        </div>
+
+        <div class="pto-visual">
+          <div class="pto-card">
+            <div class="pto-badge">Premium</div>
+            <div class="pto-card__lines" aria-hidden="true">
+              <span></span><span></span><span></span>
+            </div>
+            <p class="pto-card__name">PlayTimezOver</p>
+            <p class="pto-card__tag">EST. CALIFORNIA</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════════════════════════════
        FOOTER
   ═══════════════════════════════════ -->
   <footer class="site-footer">
@@ -422,8 +506,14 @@
       <div class="pay-modal-hero">
         <div class="pay-hero-copy">
           <span class="pay-trust-badge">Secure checkout</span>
-          <h3 class="pay-trust-title">Simple payment for consults and brand work.</h3>
-          <p class="pay-trust-copy">Pick the closest service first. Then choose the payment method that matches it without guessing.</p>
+          <h3 class="pay-trust-title">Fast payment for consults and brand work.</h3>
+          <p class="pay-trust-copy">Choose the service that fits what you need. Then use the clearest payment option for that exact amount.</p>
+
+          <div class="pay-proof-strip" aria-label="Checkout trust points">
+            <span>5★ client feedback</span>
+            <span>100+ clients served</span>
+            <span>Confirmation sent fast</span>
+          </div>
 
           <div class="pay-steps" aria-label="Simple payment steps">
             <article class="pay-step">
@@ -445,8 +535,8 @@
           <p class="pay-summary-card__amount" id="payServiceAmount">$50</p>
           <p class="pay-summary-card__note" id="payServiceNote">Stripe checkout is ready for the $50 15 Min Consult.</p>
           <div class="pay-summary-card__meta">
-            <span id="payServiceMatch">Best payment match: Secure Stripe checkout</span>
-            <span>Apple Pay, Google Pay, Cash App, bank transfer, and cards</span>
+            <span id="payServiceMatch">Best payment match: Card or wallet checkout</span>
+            <span id="payServiceTiming">Next step: confirmation sent right after payment</span>
           </div>
         </aside>
       </div>
@@ -459,25 +549,25 @@
         </div>
 
         <div class="pay-preset-grid" role="list" aria-label="Preset payment options">
-          <button class="pay-preset is-selected" type="button" data-payment-preset="15-min-consult" data-preset-label="15 Min Consult" data-preset-amount="$50" data-preset-note="Fast strategy touchpoint for quick direction and follow-up questions.">
+          <button class="pay-preset is-selected" type="button" data-payment-preset="15-min-consult" data-preset-label="15 Min Consult" data-preset-amount="$50" data-preset-note="Quick answer to one key issue.">
             <span class="pay-preset__name">15 Min Consult</span>
             <span class="pay-preset__amount">$50</span>
-            <span class="pay-preset__meta">Quick strategy call</span>
+            <span class="pay-preset__meta">Quick answer to one key issue</span>
           </button>
-          <button class="pay-preset" type="button" data-payment-preset="30-min-consult" data-preset-label="30 Min Consult" data-preset-amount="$100" data-preset-note="More room for brand, business, and execution questions.">
+          <button class="pay-preset" type="button" data-payment-preset="30-min-consult" data-preset-label="30 Min Consult" data-preset-amount="$100" data-preset-note="Live strategy call with action steps.">
             <span class="pay-preset__name">30 Min Consult</span>
             <span class="pay-preset__amount">$100</span>
-            <span class="pay-preset__meta">Deeper strategy session</span>
+            <span class="pay-preset__meta">Live strategy call with action steps</span>
           </button>
-          <button class="pay-preset" type="button" data-payment-preset="brand-audit" data-preset-label="Brand Audit" data-preset-amount="$250" data-preset-note="Best for positioning, messaging, and a sharper brand direction review.">
+          <button class="pay-preset" type="button" data-payment-preset="brand-audit" data-preset-label="Brand Audit" data-preset-amount="$250" data-preset-note="Detailed review of your offer, positioning, and site.">
             <span class="pay-preset__name">Brand Audit</span>
             <span class="pay-preset__amount">$250</span>
-            <span class="pay-preset__meta">Messaging + offer review</span>
+            <span class="pay-preset__meta">Detailed review of your offer, positioning, and site</span>
           </button>
-          <button class="pay-preset" type="button" data-payment-preset="custom-payment" data-preset-label="Custom Payment" data-preset-amount="Flexible" data-preset-note="Use this for deposits, invoice balances, or a number already discussed.">
-            <span class="pay-preset__name">Custom Payment</span>
+          <button class="pay-preset" type="button" data-payment-preset="custom-payment" data-preset-label="Custom Invoice / Agreed Amount" data-preset-amount="Flexible" data-preset-note="For retainers, split payments, or approved custom totals.">
+            <span class="pay-preset__name">Custom Invoice / Agreed Amount</span>
             <span class="pay-preset__amount">Flexible</span>
-            <span class="pay-preset__meta">Deposits or custom totals</span>
+            <span class="pay-preset__meta">For retainers, split payments, or approved custom totals</span>
           </button>
         </div>
 
@@ -488,7 +578,7 @@
         <div class="pay-methods-header">
           <p class="pay-methods-eyebrow">Step 2</p>
           <h3 class="pay-methods-heading" id="payMethodsHeading">Pick how you want to pay</h3>
-          <p class="pay-methods-copy" id="payPresetHint">Stripe checkout is ready for the $50 15 Min Consult. PayPal charges the exact selected amount. Apple Pay, Google Pay, Cash App, bank transfer, and cards appear inside Stripe when supported.</p>
+          <p class="pay-methods-copy" id="payPresetHint">Card always available for the fixed $50 consult. Apple Pay and Google Pay appear automatically on supported devices. Exact higher totals can use PayPal or an invoice request.</p>
         </div>
 
         <div class="pay-method-grid" aria-label="Payment methods">
@@ -501,42 +591,67 @@
                   <path d="M8.4 10.1c0-.8.66-1.32 1.72-1.32.94 0 1.9.29 2.85.78l.74-2.28c-.99-.47-2.04-.73-3.29-.73-2.65 0-4.45 1.38-4.45 3.62 0 3.91 5.39 3.29 5.39 5.07 0 .93-.81 1.34-1.91 1.34-1.06 0-2.31-.34-3.36-.91l-.77 2.34c1.02.55 2.49.89 3.98.89 2.87 0 4.78-1.42 4.78-3.73 0-4.2-5.68-3.46-5.68-5.07Z" fill="currentColor"/>
                 </svg>
               </span>
-              <span class="pay-method-btn__title">Secure Stripe Checkout</span>
+              <span class="pay-method-btn__title">Pay with Card or Wallet</span>
             </span>
-            <span class="pay-method-btn__sub" id="secureCheckoutSub">Stripe checkout is ready for the $50 15 Min Consult.</span>
-            <span class="pay-method-btn__meta" id="secureCheckoutMeta">Apple Pay, Google Pay, Cash App, bank transfer, and cards.</span>
+            <span class="pay-method-btn__sub" id="secureCheckoutSub">Card always available. Continue to secure checkout for the $50 15 Min Consult.</span>
+            <span class="pay-method-btn__meta" id="secureCheckoutMeta">Apple Pay and Google Pay appear automatically on supported devices.</span>
+            <span class="pay-method-btn__cta">Continue to secure checkout</span>
             <span class="pay-method-btn__arrow" aria-hidden="true">→</span>
           </a>
 
           <div class="pay-method-paypal" id="paypalButtonWrap" aria-live="polite">
             <div class="pay-method-paypal__header">
-              <span class="pay-method-btn__badge pay-method-btn__badge--paypal">PayPal</span>
-              <h3 class="pay-method-paypal__title">Pay the exact selected amount with PayPal</h3>
-              <p class="pay-method-paypal__copy">PayPal charges the exact selected amount for the service above. Use it for the $100 consult, the $250 brand audit, or any custom amount you already discussed.</p>
+              <span class="pay-method-btn__badge pay-method-btn__badge--paypal">Exact amount</span>
+              <h3 class="pay-method-paypal__title">PayPal or exact-amount invoice</h3>
+              <p class="pay-method-paypal__copy">PayPal charges the exact selected amount when connected. Use this area for the $100 consult, the $250 brand audit, or a custom total you already discussed.</p>
             </div>
             <label class="paypal-custom-amount" id="paypalCustomAmountWrap" hidden>
               <span>Custom amount (USD)</span>
               <input id="paypalCustomAmount" type="number" min="1" step="0.01" inputmode="decimal" placeholder="Enter agreed amount" />
             </label>
             <p class="paypal-status" id="paypalStatus">PayPal will charge the selected amount shown above.</p>
+            <a class="btn btn--outline btn--block pay-invoice-btn" id="invoiceRequestLink" href="mailto:contact@kosavant.com?subject=KO%20Savant%20payment%20request">Request exact-amount invoice</a>
             <div id="paypalButtons"></div>
           </div>
 
-          <button class="pay-method-btn pay-method-btn--bitcoin" id="bitcoinBtn" aria-label="Pay with Bitcoin">
-            <span class="pay-method-btn__badge">Other option</span>
-            <span class="pay-method-btn__brand bitcoin-wordmark">
-              <span class="pay-method-btn__icon pay-method-btn__icon--bitcoin" aria-hidden="true">
-                <svg width="28" height="28" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-                  <circle cx="16" cy="16" r="16" fill="#F7931A"/>
-                  <path d="M22.9 13.9c.3-2.1-1.3-3.2-3.5-3.9l.7-2.9-1.7-.4-.7 2.8c-.4-.1-.9-.2-1.4-.3l.7-2.9-1.7-.4-.7 2.9c-.4-.1-.7-.2-1-.2l-2.3-.6-.4 1.8s1.3.3 1.2.3c.7.2.8.7.8 1l-.8 3.3c0 0 .1 0 .1.1h-.1l-1.1 4.5c-.1.2-.3.5-.8.4.0 0-1.2-.3-1.2-.3l-.8 1.9 2.2.6c.4.1.8.2 1.2.3l-.7 2.9 1.7.4.7-2.9c.5.1 1 .2 1.4.4l-.7 2.9 1.7.4.7-2.9c2.9.5 5 .3 5.9-2.3.7-2.1-.0-3.3-1.5-4.1 1.1-.3 1.9-1 2.1-2.5zm-3.8 5.3c-.5 2.1-3.9 1-5 .7l.9-3.6c1.1.3 4.6.8 4.1 2.9zm.5-5.3c-.5 1.9-3.3 1-4.3.7l.8-3.2c.9.2 3.9.7 3.5 2.5z" fill="white"/>
-                </svg>
-              </span>
-              <span class="pay-method-btn__title">Bitcoin</span>
-            </span>
-            <span class="pay-method-btn__sub" id="bitcoinBtnSub">Send BTC directly for the selected service.</span>
-            <span class="pay-method-btn__meta">Wallet address + QR code</span>
-            <span class="pay-method-btn__arrow" aria-hidden="true">→</span>
-          </button>
+          <details class="pay-other-methods">
+            <summary>Other payment methods</summary>
+            <div class="pay-other-methods__body">
+              <button class="pay-method-btn pay-method-btn--bitcoin" id="bitcoinBtn" aria-label="Pay with Bitcoin">
+                <span class="pay-method-btn__badge">Crypto</span>
+                <span class="pay-method-btn__brand bitcoin-wordmark">
+                  <span class="pay-method-btn__icon pay-method-btn__icon--bitcoin" aria-hidden="true">
+                    <svg width="28" height="28" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+                      <circle cx="16" cy="16" r="16" fill="#F7931A"/>
+                      <path d="M22.9 13.9c.3-2.1-1.3-3.2-3.5-3.9l.7-2.9-1.7-.4-.7 2.8c-.4-.1-.9-.2-1.4-.3l.7-2.9-1.7-.4-.7 2.9c-.4-.1-.7-.2-1-.2l-2.3-.6-.4 1.8s1.3.3 1.2.3c.7.2.8.7.8 1l-.8 3.3c0 0 .1 0 .1.1h-.1l-1.1 4.5c-.1.2-.3.5-.8.4.0 0-1.2-.3-1.2-.3l-.8 1.9 2.2.6c.4.1.8.2 1.2.3l-.7 2.9 1.7.4.7-2.9c.5.1 1 .2 1.4.4l-.7 2.9 1.7.4.7-2.9c2.9.5 5 .3 5.9-2.3.7-2.1-.0-3.3-1.5-4.1 1.1-.3 1.9-1 2.1-2.5zm-3.8 5.3c-.5 2.1-3.9 1-5 .7l.9-3.6c1.1.3 4.6.8 4.1 2.9zm.5-5.3c-.5 1.9-3.3 1-4.3.7l.8-3.2c.9.2 3.9.7 3.5 2.5z" fill="white"/>
+                    </svg>
+                  </span>
+                  <span class="pay-method-btn__title">Bitcoin</span>
+                </span>
+                <span class="pay-method-btn__sub" id="bitcoinBtnSub">Send BTC directly for the selected service.</span>
+                <span class="pay-method-btn__meta">Wallet address + QR code</span>
+                <span class="pay-method-btn__arrow" aria-hidden="true">→</span>
+              </button>
+              <p class="pay-other-methods__note">Need a bank transfer, split payment, or help choosing the right option? Email contact@kosavant.com.</p>
+            </div>
+          </details>
+        </div>
+
+        <div class="pay-after-panel">
+          <p class="pay-after-eyebrow">After you pay</p>
+          <h3 class="pay-after-heading">What happens next</h3>
+          <ul class="pay-after-list">
+            <li>Confirmation is sent right after payment.</li>
+            <li>15 Min Consult clients receive follow-up details within 24 hours.</li>
+            <li>30 Min Consult clients receive a booking link.</li>
+            <li>Brand Audit clients receive intake details and a turnaround note.</li>
+          </ul>
+        </div>
+
+        <div class="pay-support-strip">
+          <p>Questions before paying? contact@kosavant.com</p>
+          <a href="mailto:contact@kosavant.com">Email support</a>
+          <a href="https://kosavant.com/privacy-policy.html">Privacy Policy</a>
         </div>
       </div>
     </div>
@@ -682,12 +797,15 @@
     const payServiceAmount = document.getElementById('payServiceAmount');
     const payServiceNote = document.getElementById('payServiceNote');
     const payServiceMatch = document.getElementById('payServiceMatch');
+    const payServiceTiming = document.getElementById('payServiceTiming');
     const paymentPresetButtons = Array.from(document.querySelectorAll('[data-payment-preset]'));
+    const paymentLaunchButtons = Array.from(document.querySelectorAll('[data-open-payment-preset]'));
     const paypalButtonWrap = document.getElementById('paypalButtonWrap');
     const paypalButtons = document.getElementById('paypalButtons');
     const paypalStatus = document.getElementById('paypalStatus');
     const paypalCustomAmountWrap = document.getElementById('paypalCustomAmountWrap');
     const paypalCustomAmount = document.getElementById('paypalCustomAmount');
+    const invoiceRequestLink = document.getElementById('invoiceRequestLink');
 
     let currentPaymentPreset = {
       paymentPreset: '15-min-consult',
@@ -711,12 +829,40 @@
         paypalCustomAmountWrap.hidden = false;
         paypalStatus.textContent = customCents
           ? `PayPal will charge ${formatPayPalAmount(customCents)} USD for Custom Payment.`
-          : 'Enter the agreed amount above to pay with PayPal.';
+          : 'Enter the agreed amount above to request the right invoice or pay with PayPal when available.';
         return;
       }
 
       paypalCustomAmountWrap.hidden = true;
       paypalStatus.textContent = `PayPal will charge ${currentPaymentPreset.presetAmount} for ${currentPaymentPreset.presetLabel}.`;
+    }
+
+    function updateInvoiceRequestLink() {
+      if (!invoiceRequestLink) return;
+
+      const amountLabel = currentPaymentPreset.presetAmount === 'Flexible'
+        ? 'custom amount'
+        : currentPaymentPreset.presetAmount;
+      const subject = `KO Savant payment request — ${currentPaymentPreset.presetLabel}`;
+      const body = [
+        'Hi KO Savant,',
+        '',
+        `I want to pay for ${currentPaymentPreset.presetLabel}.`,
+        `Amount: ${amountLabel}.`,
+        '',
+        'Name:',
+        'Email:',
+        'Preferred payment method: PayPal / invoice / bank transfer',
+      ].join('\n');
+
+      invoiceRequestLink.href = `mailto:contact@kosavant.com?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+      invoiceRequestLink.textContent = currentPaymentPreset.paymentPreset === 'custom-payment'
+        ? 'Request custom invoice'
+        : 'Request exact-amount invoice';
+    }
+
+    function findPresetButtonById(paymentPreset) {
+      return paymentPresetButtons.find((button) => button.dataset.paymentPreset === paymentPreset);
     }
 
     function updatePaymentPreset(selectedButton) {
@@ -731,10 +877,10 @@
 
       const isFixedStripeConsult = paymentPreset === '15-min-consult';
       const summaryInstruction = isFixedStripeConsult
-        ? 'Best payment match: Secure Stripe checkout'
+        ? 'Best payment match: Card or wallet checkout'
         : paymentPreset === 'custom-payment'
-          ? 'Best payment match: PayPal custom amount'
-          : 'Best payment match: PayPal exact amount';
+          ? 'Best payment match: Custom invoice or PayPal'
+          : 'Best payment match: Exact amount invoice or PayPal';
 
       payPresetSummary.textContent = `Selected service: ${presetLabel} · ${summaryInstruction}`;
       payServiceLabel.textContent = presetLabel;
@@ -742,26 +888,33 @@
       payServiceNote.textContent = isFixedStripeConsult
         ? 'Stripe checkout is ready for the $50 15 Min Consult.'
         : paymentPreset === 'custom-payment'
-          ? 'PayPal handles your custom amount for this selection.'
-          : `PayPal handles the exact ${presetAmount} amount for this selection.`;
+          ? 'Use the invoice request or PayPal path for this custom amount.'
+          : `Use the exact-amount invoice or PayPal path for ${presetAmount}.`;
       payServiceMatch.textContent = summaryInstruction;
+      payServiceTiming.textContent = paymentPreset === '30-min-consult'
+        ? 'Next step: 30 Min Consult clients receive a booking link'
+        : paymentPreset === 'brand-audit'
+          ? 'Next step: Brand Audit clients receive intake details and a turnaround note'
+          : paymentPreset === 'custom-payment'
+            ? 'Next step: custom invoice requests get a direct follow-up'
+            : 'Next step: confirmation sent right after payment';
 
       secureCheckoutSub.textContent = isFixedStripeConsult
-        ? 'Stripe checkout is ready for the $50 15 Min Consult.'
-        : 'Stripe checkout is still available for the fixed $50 15 Min Consult.';
+        ? 'Card always available. Continue to secure checkout for the $50 15 Min Consult.'
+        : 'Card checkout stays available for the fixed $50 15 Min Consult.';
 
       secureCheckoutMeta.textContent = isFixedStripeConsult
-        ? 'Apple Pay, Google Pay, Cash App, bank transfer, and cards.'
+        ? 'Apple Pay and Google Pay appear automatically on supported devices.'
         : paymentPreset === 'custom-payment'
-          ? 'Use PayPal below if you need a custom amount right now.'
-          : `Use PayPal below to pay the exact ${presetAmount} for ${presetLabel}.`;
+          ? 'Use the invoice request below if you need a custom amount right now.'
+          : `Use the exact-amount invoice or PayPal path below for ${presetAmount}.`;
 
       if (isFixedStripeConsult) {
-        payPresetHint.textContent = 'Stripe checkout is ready for the $50 15 Min Consult. PayPal charges the exact selected amount. Apple Pay, Google Pay, Cash App, bank transfer, and cards appear inside Stripe when supported.';
+        payPresetHint.textContent = 'Card always available for the fixed $50 consult. Apple Pay and Google Pay appear automatically on supported devices. Exact higher totals can use PayPal or an invoice request.';
       } else if (paymentPreset === 'custom-payment') {
-        payPresetHint.textContent = 'For custom amounts, use PayPal below. Stripe remains available if you only need the fixed $50 15 Min Consult.';
+        payPresetHint.textContent = 'For custom amounts, use the invoice request or PayPal path below. The card and wallet checkout remains available if you only need the fixed $50 consult.';
       } else {
-        payPresetHint.textContent = `PayPal charges the exact ${presetAmount} for ${presetLabel}. Stripe remains available if you only need the fixed $50 15 Min Consult.`;
+        payPresetHint.textContent = `PayPal charges the exact selected amount when connected. Use the invoice request or PayPal path below for ${presetAmount}. The card checkout remains available only for the fixed $50 consult.`;
       }
 
       bitcoinBtnSub.textContent = paymentPreset === 'custom-payment'
@@ -777,6 +930,7 @@
         paypalCustomAmount.value = '';
       }
 
+      updateInvoiceRequestLink();
       updatePayPalStatus();
     }
 
@@ -786,9 +940,12 @@
       }
 
       if (!PAYPAL_CLIENT_ID) {
-        paypalStatus.textContent = 'PayPal setup is waiting on a verified live client ID. Use Stripe or Bitcoin for now.';
+        paypalButtons.hidden = true;
+        paypalStatus.textContent = 'PayPal charges the exact selected amount when connected. For now, use the invoice request button below for exact totals.';
         return;
       }
+
+      paypalButtons.hidden = false;
 
       if (!window.paypal) {
         if (!document.querySelector('script[data-paypal-sdk="true"]')) {
@@ -858,6 +1015,16 @@
 
     paymentPresetButtons.forEach(button => {
       button.addEventListener('click', () => updatePaymentPreset(button));
+    });
+
+    paymentLaunchButtons.forEach((button) => {
+      button.addEventListener('click', () => {
+        const selectedButton = findPresetButtonById(button.dataset.openPaymentPreset);
+        if (selectedButton) {
+          updatePaymentPreset(selectedButton);
+        }
+        openModal(payModal);
+      });
     });
 
     paypalCustomAmount?.addEventListener('input', () => {

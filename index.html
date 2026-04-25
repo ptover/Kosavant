@@ -99,8 +99,8 @@
 
       <nav class="links-grid" aria-label="Contact and connect links">
 
-        <!-- Book a Consultation — PRIMARY — opens modal -->
-        <a class="link-card link-card--primary" id="bookBtn" href="#consultation-booking" aria-haspopup="dialog" aria-expanded="false" onclick="document.getElementById('bookingModal').classList.add('open'); document.body.style.overflow='hidden'; return false;">
+        <!-- Book a Consultation — PRIMARY — direct booking form link -->
+        <a class="link-card link-card--primary" id="bookBtn" href="#consultation-booking">
           <span class="link-card__icon">
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
               <rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/>
@@ -285,7 +285,7 @@
       <div class="booking-copy">
         <p class="section-eyebrow">Direct Booking</p>
         <h2 class="section-title">Book Your Consultation</h2>
-        <p class="booking-intro">If the pop-up does not open on your device, use this direct booking form. Send your request here and KO Savant will follow up within 24 hours.</p>
+        <p class="booking-intro">Tap Book a Consultation and visitors are brought straight to this active booking form. Send your request here and KO Savant will follow up within 24 hours.</p>
         <ul class="booking-points">
           <li>Best for strategy, brand, startup, and fashion questions</li>
           <li>Confirmation and next steps are sent after you submit</li>
@@ -1108,7 +1108,6 @@
       if (returnFocus) returnFocus.focus();
     }
 
-    bookBtn.addEventListener('click', () => openModal(modal));
     closeBtn.addEventListener('click', () => closeModal(modal, bookBtn));
     modal.addEventListener('click', e => { if (e.target === modal) closeModal(modal, bookBtn); });
 

@@ -7,8 +7,13 @@ const indexHtml = fs.readFileSync(path.join(__dirname, '..', 'index.html'), 'utf
 const styleCss = fs.readFileSync(path.join(__dirname, '..', 'style.css'), 'utf8');
 const privacyPolicyPath = path.join(__dirname, '..', 'privacy-policy.html');
 
-test('book a consultation has a direct non-JS path and visible booking section', () => {
-  assert.match(indexHtml, /id="bookBtn"[^>]*href="#consultation-booking"/i);
+test('book a consultation is a direct active link with a visible booking section', () => {
+  const bookButtonMatch = indexHtml.match(/<a[^>]*id="bookBtn"[^>]*>/i);
+
+  assert.ok(bookButtonMatch, 'Book a Consultation link should exist');
+  assert.match(bookButtonMatch[0], /href="#consultation-booking"/i);
+  assert.doesNotMatch(bookButtonMatch[0], /onclick=/i);
+  assert.doesNotMatch(indexHtml, /bookBtn\.addEventListener\('click',\s*\(\)\s*=>\s*openModal\(modal\)\)/);
   assert.match(indexHtml, /id="consultation-booking"/);
   assert.match(indexHtml, /Book Your Consultation/i);
   assert.match(indexHtml, /id="bookingFormInline"/);

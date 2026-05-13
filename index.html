@@ -3,12 +3,19 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>KO Savant | Business & Fashion</title>
-  <meta name="description" content="KO Savant — business mentor, fashion entrepreneur, and founder of PlayTimezOver. Book a consultation, shop the collection, and connect." />
-  <meta property="og:title" content="KO Savant | Business & Fashion" />
-  <meta property="og:description" content="Business mentor, fashion entrepreneur, and founder of PlayTimezOver clothing." />
+  <title>KO Savant | Business & Fashion Brand Consultant</title>
+  <meta name="description" content="Book KO Savant for clothing brand audits, fashion-business strategy, startup mentorship, and clear launch guidance for founders and creators." />
+  <link rel="canonical" href="https://kosavant.com/" />
+  <meta name="robots" content="index, follow" />
+  <meta property="og:title" content="KO Savant | Business & Fashion Brand Consultant" />
+  <meta property="og:description" content="Clothing brand audits, fashion-business strategy, startup mentorship, and launch guidance for founders and creators." />
   <meta property="og:image" content="https://kosavant.com/ko-savant-photo.jpg" />
-  <meta property="og:url" content="https://kosavant.com" />
+  <meta property="og:url" content="https://kosavant.com/" />
+  <meta property="og:type" content="website" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="KO Savant | Business & Fashion Brand Consultant" />
+  <meta name="twitter:description" content="Book consulting for brand audits, fashion-business strategy, startup mentorship, and clothing brand launch direction." />
+  <meta name="twitter:image" content="https://kosavant.com/ko-savant-photo.jpg" />
 
   <!-- Favicon -->
   <link rel="icon" type="image/x-icon" href="favicon.ico" />
@@ -20,8 +27,102 @@
   <link href="https://api.fontshare.com/v2/css?f[]=clash-display@400,500,600,700&f[]=satoshi@300,400,500,700&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="style.css" />
   <script src="payment-utils.js"></script>
+  <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "Person",
+      "@id": "https://kosavant.com/#person",
+      "name": "KO Savant",
+      "url": "https://kosavant.com/",
+      "image": "https://kosavant.com/ko-savant-photo.jpg",
+      "jobTitle": "Business and Fashion Brand Consultant",
+      "sameAs": [
+        "https://www.instagram.com/k.o._savant",
+        "https://playtimezoverclothing.com"
+      ],
+      "knowsAbout": [
+        "Clothing brand strategy",
+        "Fashion business",
+        "Startup mentorship",
+        "Brand audits",
+        "Product launch planning"
+      ]
+    },
+    {
+      "@type": "ProfessionalService",
+      "@id": "https://kosavant.com/#business",
+      "name": "KO Savant",
+      "url": "https://kosavant.com/",
+      "image": "https://kosavant.com/ko-savant-photo.jpg",
+      "email": "contact@kosavant.com",
+      "founder": {
+        "@id": "https://kosavant.com/#person"
+      },
+      "areaServed": "United States",
+      "priceRange": "$50-$250",
+      "serviceType": [
+        "Business consulting",
+        "Fashion brand consulting",
+        "Clothing brand audit",
+        "Startup mentorship"
+      ]
+    },
+    {
+      "@type": "WebSite",
+      "@id": "https://kosavant.com/#website",
+      "url": "https://kosavant.com/",
+      "name": "KO Savant",
+      "publisher": {
+        "@id": "https://kosavant.com/#business"
+      }
+    },
+    {
+      "@type": "OfferCatalog",
+      "@id": "https://kosavant.com/#consulting-offers",
+      "name": "KO Savant Consulting Offers",
+      "itemListElement": [
+        {
+          "@type": "Offer",
+          "name": "15 Min Consult",
+          "price": "50",
+          "priceCurrency": "USD",
+          "url": "https://kosavant.com/#offers"
+        },
+        {
+          "@type": "Offer",
+          "name": "30 Min Consult",
+          "price": "100",
+          "priceCurrency": "USD",
+          "url": "https://kosavant.com/#offers"
+        },
+        {
+          "@type": "Offer",
+          "name": "Brand Audit",
+          "price": "250",
+          "priceCurrency": "USD",
+          "url": "https://kosavant.com/clothing-brand-audit.html"
+        }
+      ]
+    }
+  ]
+}
+  </script>
 </head>
 <body>
+
+  <header class="top-nav" aria-label="KO Savant site navigation">
+    <a class="top-nav__brand" href="https://kosavant.com/">KO Savant</a>
+    <nav class="top-nav__links" aria-label="Primary navigation">
+      <a href="https://kosavant.com/business-consulting.html">Services</a>
+      <a href="https://kosavant.com/clothing-brand-audit.html">Brand Audit</a>
+      <a href="https://kosavant.com/consultation-pricing.html">Pricing</a>
+      <a href="https://kosavant.com/clothing-brand-launch-checklist.html">Launch Checklist</a>
+      <a class="top-nav__cta" href="https://kosavant.com/#consultation-booking">Book</a>
+    </nav>
+  </header>
+
 
   <!-- ═══════════════════════════════════
        HERO
@@ -44,13 +145,18 @@
       <!-- Avatar with real photo -->
       <div class="avatar-wrap">
         <div class="avatar-ring">
-          <img
-            class="avatar-photo"
-            src="ko-savant-photo.jpg"
-            alt="KO Savant"
-            width="134"
-            height="134"
-          />
+          <picture>
+            <source srcset="ko-savant-photo.webp" type="image/webp" />
+            <img
+              class="avatar-photo"
+              src="ko-savant-photo.jpg"
+              alt="KO Savant, business and fashion brand consultant"
+              width="134"
+              height="134"
+              loading="eager"
+              decoding="async"
+            />
+          </picture>
         </div>
         <div class="available-badge">
           <span class="available-dot" aria-hidden="true"></span>
@@ -59,8 +165,13 @@
       </div>
 
       <div class="hero__text">
-        <h1 class="hero__name">KO<br/>Savant</h1>
-        <p class="hero__tagline">Business &amp; Fashion</p>
+        <h1 class="hero__name"><span>KO <br/>Savant</span><span class="hero__role"> Business &amp; Fashion Brand Consultant</span></h1>
+        <p class="hero__tagline">Brand audits, strategy calls, and launch guidance for clothing brands, founders, and creators.</p>
+      </div>
+
+      <div class="hero-actions" aria-label="Primary actions">
+        <a href="#consultation-booking" class="btn btn--primary">Book a Consultation</a>
+        <a href="clothing-brand-audit.html" class="btn btn--outline">View Brand Audit</a>
       </div>
 
       <!-- Stats -->
@@ -193,13 +304,40 @@
   </section>
 
   <!-- ═══════════════════════════════════
+       HOW IT WORKS
+  ═══════════════════════════════════ -->
+  <section class="how-section" id="how-it-works">
+    <div class="container">
+      <p class="section-eyebrow">How It Works</p>
+      <h2 class="section-title">A clear path from question to action.</h2>
+      <div class="how-grid">
+        <article class="how-card">
+          <span class="how-card__step">01</span>
+          <h3>Choose your session</h3>
+          <p>Pick a 15-minute consult, 30-minute consult, brand audit, or custom invoice based on the decision you need to make.</p>
+        </article>
+        <article class="how-card">
+          <span class="how-card__step">02</span>
+          <h3>Submit your goals</h3>
+          <p>Use the booking form to share your brand, business question, launch goal, or fashion idea so the call has direction.</p>
+        </article>
+        <article class="how-card">
+          <span class="how-card__step">03</span>
+          <h3>Pay and get next steps</h3>
+          <p>Use secure checkout or request an exact invoice. Confirmation and follow-up details are sent after the request/payment path is complete.</p>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════════════════════════════
        OFFERS
   ═══════════════════════════════════ -->
   <section class="offers-section" id="offers">
     <div class="container">
       <p class="section-eyebrow">Start Here</p>
       <h2 class="section-title">Choose Your Session</h2>
-      <p class="offers-intro">Pick the session that matches what you need right now. Then continue to secure checkout with the best payment path already explained for you.</p>
+      <p class="offers-intro">Choose the service that matches your current stage: fast clarity, deeper strategy, a full clothing brand audit, or a custom invoice. The next step is always clear — submit a request, pay securely, and get confirmation.</p>
 
       <div class="offer-proof-strip" aria-label="Consulting trust points">
         <article class="offer-proof-item">
@@ -229,7 +367,7 @@
             <li>Fast clarity on one decision</li>
             <li>Card and wallet checkout ready</li>
           </ul>
-          <button class="btn btn--primary btn--block offer-card__button" type="button" data-open-payment-preset="15-min-consult">Choose this option</button>
+          <button class="btn btn--primary btn--block offer-card__button" type="button" data-open-payment-preset="15-min-consult">Book 15-Min Consult</button>
         </article>
 
         <article class="offer-card">
@@ -243,7 +381,7 @@
             <li>More room for questions and planning</li>
             <li>Exact-amount invoice or PayPal path</li>
           </ul>
-          <button class="btn btn--outline btn--block offer-card__button" type="button" data-open-payment-preset="30-min-consult">Choose this option</button>
+          <button class="btn btn--outline btn--block offer-card__button" type="button" data-open-payment-preset="30-min-consult">Book 30-Min Consult</button>
         </article>
 
         <article class="offer-card">
@@ -257,7 +395,7 @@
             <li>Sharper messaging and clearer offer direction</li>
             <li>Exact-amount invoice or PayPal path</li>
           </ul>
-          <button class="btn btn--outline btn--block offer-card__button" type="button" data-open-payment-preset="brand-audit">Choose this option</button>
+          <button class="btn btn--outline btn--block offer-card__button" type="button" data-open-payment-preset="brand-audit">Request Brand Audit</button>
         </article>
 
         <article class="offer-card">
@@ -271,7 +409,7 @@
             <li>Use this when a number was already discussed</li>
             <li>Invoice support built into the payment flow</li>
           </ul>
-          <button class="btn btn--outline btn--block offer-card__button" type="button" data-open-payment-preset="custom-payment">Choose this option</button>
+          <button class="btn btn--outline btn--block offer-card__button" type="button" data-open-payment-preset="custom-payment">Start Custom Invoice</button>
         </article>
       </div>
     </div>
@@ -487,6 +625,23 @@
   </div>
 </section>
 
+
+  <!-- ═══════════════════════════════════
+       SEO RESOURCE LINKS
+  ═══════════════════════════════════ -->
+  <section class="seo-links-section" id="resources">
+    <div class="container">
+      <p class="section-eyebrow">Resources</p>
+      <h2 class="section-title">Brand strategy resources for founders.</h2>
+      <div class="seo-resource-grid">
+        <a class="seo-resource-card" href="business-consulting.html"><span>Services</span><strong>Business Consulting</strong><p>Strategy calls for founders who need direction, priorities, and a cleaner offer.</p></a>
+        <a class="seo-resource-card" href="fashion-brand-consultant.html"><span>Fashion</span><strong>Fashion Brand Consultant</strong><p>Guidance for clothing brands, creators, visual direction, and fashion-business decisions.</p></a>
+        <a class="seo-resource-card" href="clothing-brand-audit.html"><span>Audit</span><strong>Clothing Brand Audit</strong><p>A focused review of your offer, site, product presentation, and launch path.</p></a>
+        <a class="seo-resource-card" href="clothing-brand-launch-checklist.html"><span>Checklist</span><strong>Launch Checklist</strong><p>A practical checklist to tighten a clothing brand before the next drop.</p></a>
+      </div>
+    </div>
+  </section>
+
   <!-- ═══════════════════════════════════
        PLAYTIMEZOVER
   ═══════════════════════════════════ -->
@@ -539,11 +694,15 @@
           <text x="0" y="28" font-family="'Clash Display', 'Helvetica Neue', sans-serif" font-size="30" font-weight="700" fill="currentColor" letter-spacing="1">KO</text>
           <text x="46" y="28" font-family="'Satoshi', 'Inter', sans-serif" font-size="12" font-weight="500" fill="#7a7876" letter-spacing="4">SAVANT</text>
         </svg>
-        <span class="footer-tagline">Business &amp; Fashion</span>
+        <span class="footer-tagline">Business &amp; Fashion Brand Consulting</span>
       </div>
       <div class="footer-links">
         <a href="mailto:contact@kosavant.com">contact@kosavant.com</a>
         <a href="https://www.instagram.com/k.o._savant" target="_blank" rel="noopener noreferrer">Instagram</a>
+        <a href="https://kosavant.com/business-consulting.html">Business Consulting</a>
+        <a href="https://kosavant.com/fashion-brand-consultant.html">Fashion Brand Consultant</a>
+        <a href="https://kosavant.com/clothing-brand-audit.html">Brand Audit</a>
+        <a href="https://kosavant.com/consultation-pricing.html">Pricing</a>
         <a href="https://kosavant.com/privacy-policy.html">Privacy Policy</a>
       </div>
       <p class="footer-copy">&copy; 2025 KO Savant. All rights reserved.</p>

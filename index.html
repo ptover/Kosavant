@@ -9,13 +9,13 @@
   <meta name="robots" content="index, follow" />
   <meta property="og:title" content="KO Savant | Build With Direction" />
   <meta property="og:description" content="Practical brand strategy, honest feedback, and clear next steps for fashion founders and creators." />
-  <meta property="og:image" content="https://kosavant.com/ko-savant-photo.jpg" />
+  <meta property="og:image" content="https://kosavant.com/assets/higgsfield/ko-savant-og.png" />
   <meta property="og:url" content="https://kosavant.com/" />
   <meta property="og:type" content="website" />
   <meta name="twitter:card" content="summary_large_image" />
   <meta name="twitter:title" content="KO Savant | Build With Direction" />
   <meta name="twitter:description" content="Practical brand strategy, honest feedback, and clear next steps for fashion founders and creators." />
-  <meta name="twitter:image" content="https://kosavant.com/ko-savant-photo.jpg" />
+  <meta name="twitter:image" content="https://kosavant.com/assets/higgsfield/ko-savant-og.png" />
 
   <!-- Favicon -->
   <link rel="icon" type="image/x-icon" href="favicon.ico" />
@@ -125,83 +125,84 @@
 
 
   <!-- ═══════════════════════════════════
-       HERO
+       HIGGSFIELD CINEMATIC JOURNEY
   ═══════════════════════════════════ -->
-  <section class="hero" id="top">
-    <div class="hero__noise" aria-hidden="true"></div>
+  <section class="cinematic-journey" id="top" data-cinematic-journey>
+    <div class="cinematic-stage">
+      <picture class="cinematic-poster" data-cinematic-poster>
+        <source media="(max-width: 760px)" srcset="assets/higgsfield/ko-savant-atelier-mobile-poster.png" />
+        <img src="assets/higgsfield/ko-savant-atelier-poster.png" alt="" width="1920" height="1080" fetchpriority="high" />
+      </picture>
+      <video
+        class="cinematic-film"
+        data-cinematic-film
+        data-desktop-src="assets/higgsfield/ko-savant-atelier.mp4"
+        data-mobile-src="assets/higgsfield/ko-savant-atelier-mobile.mp4"
+        muted
+        playsinline
+        preload="none"
+        aria-hidden="true"
+      ></video>
+      <div class="cinematic-shade" aria-hidden="true"></div>
+      <div class="cinematic-grain" aria-hidden="true"></div>
 
-    <!-- PTO logo watermarks scattered in hero -->
-    <img src="pto-logo-white.png" class="hero-logo-bg hero-logo-bg--1" aria-hidden="true" alt="" />
-    <img src="pto-logo-white.png" class="hero-logo-bg hero-logo-bg--2" aria-hidden="true" alt="" />
-    <img src="pto-logo-white.png" class="hero-logo-bg hero-logo-bg--3" aria-hidden="true" alt="" />
+      <div class="cinematic-brand" aria-label="KO Savant">
+        <span>KO</span>
+        <span>SAVANT</span>
+      </div>
+      <p class="cinematic-status"><span></span>Now booking strategy sessions</p>
 
-    <div class="brand-lines" aria-hidden="true">
-      <span class="line line--1"></span>
-      <span class="line line--2"></span>
-      <span class="line line--3"></span>
+      <div class="cinematic-progress" aria-hidden="true">
+        <span data-cinematic-progress></span>
+      </div>
+      <p class="cinematic-scroll" aria-hidden="true">Scroll to enter the atelier</p>
     </div>
 
-    <div class="hero__inner">
-      <!-- Avatar with real photo -->
-      <div class="avatar-wrap">
-        <div class="avatar-ring">
-          <picture>
-            <source srcset="ko-savant-photo.webp" type="image/webp" />
-            <img
-              class="avatar-photo"
-              src="ko-savant-photo.jpg"
-              alt="KO Savant, business and fashion brand consultant"
-              width="1080"
-              height="1182"
-              loading="eager"
-              decoding="async"
-            />
-          </picture>
+    <div class="cinematic-chapters">
+      <article class="cinematic-chapter is-active" data-cinematic-chapter>
+        <div class="cinematic-copy">
+          <p class="cinematic-index">01 / Direction</p>
+          <h1>Build with<br><em>direction.</em></h1>
+          <p>Turn scattered ideas into a clear brand, a stronger offer, and a launch plan you can actually execute.</p>
+          <div class="cinematic-actions">
+            <a href="#consultation-booking" class="btn btn--primary">Start with a strategy call</a>
+            <a href="#offers" class="btn btn--glass">Compare services</a>
+          </div>
         </div>
-        <div class="available-badge">
-          <span class="available-dot" aria-hidden="true"></span>
-          Now booking
-        </div>
-        <div class="portrait-note" aria-hidden="true">
-          <strong>Founder-led strategy</strong>
-          <span>Built from real brand work</span>
-        </div>
-      </div>
+      </article>
 
-      <div class="hero__text">
-        <p class="hero__kicker">Business × Fashion × Culture</p>
-        <h1 class="hero__name"><span>Build with<br/><em>direction.</em></span><span class="hero__role">KO Savant — Brand Strategist for Fashion Founders</span></h1>
-        <p class="hero__tagline">Turn scattered ideas into a clear brand, a stronger offer, and a launch plan you can actually execute.</p>
-      </div>
-
-      <div class="hero-actions" aria-label="Primary actions">
-        <a href="#consultation-booking" class="btn btn--primary">Start with a strategy call</a>
-        <a href="#offers" class="btn btn--outline">Compare services</a>
-      </div>
-
-      <!-- Stats -->
-      <div class="stats">
-        <div class="stat">
-          <span class="stat__value">1:1</span>
-          <span class="stat__label">Focused guidance</span>
+      <article class="cinematic-chapter" data-cinematic-chapter>
+        <div class="cinematic-copy cinematic-copy--right">
+          <p class="cinematic-index">02 / Clarity</p>
+          <h2>Name the real<br><em>decision.</em></h2>
+          <p>Cut through the noise. Find the one choice that makes the next ten moves easier.</p>
         </div>
-        <div class="stat__divider" aria-hidden="true"></div>
-        <div class="stat">
-          <span class="stat__value">Clear</span>
-          <span class="stat__label">Action plan</span>
-        </div>
-        <div class="stat__divider" aria-hidden="true"></div>
-        <div class="stat">
-          <span class="stat__value">24h</span>
-          <span class="stat__label">Follow-up</span>
-        </div>
-      </div>
+      </article>
 
-      <a href="#links" class="scroll-hint" aria-label="Scroll down">
-        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" aria-hidden="true">
-          <path d="M12 5v14M5 12l7 7 7-7"/>
-        </svg>
-      </a>
+      <article class="cinematic-chapter" data-cinematic-chapter>
+        <div class="cinematic-copy">
+          <p class="cinematic-index">03 / Positioning</p>
+          <h2>Make the brand<br><em>legible.</em></h2>
+          <p>Clarify who it is for, why it matters, and what makes the offer worth choosing.</p>
+        </div>
+      </article>
+
+      <article class="cinematic-chapter" data-cinematic-chapter>
+        <div class="cinematic-copy cinematic-copy--right">
+          <p class="cinematic-index">04 / Launch</p>
+          <h2>Build the<br><em>launch path.</em></h2>
+          <p>Translate vision into priorities, proof, and a rollout your audience can follow.</p>
+        </div>
+      </article>
+
+      <article class="cinematic-chapter" data-cinematic-chapter>
+        <div class="cinematic-copy cinematic-copy--center">
+          <p class="cinematic-index">05 / Conviction</p>
+          <h2>Move with<br><em>conviction.</em></h2>
+          <p>Strategy is only useful when it turns into action.</p>
+          <a href="#consultation-booking" class="btn btn--primary">Book KO Savant</a>
+        </div>
+      </article>
     </div>
   </section>
 
@@ -664,13 +665,9 @@
         </div>
 
         <div class="pto-visual">
-          <div class="pto-card">
-            <div class="pto-badge">Premium</div>
-            <div class="pto-card__lines" aria-hidden="true">
-              <span></span><span></span><span></span>
-            </div>
-            <p class="pto-card__name">PlayTimezOver</p>
-            <p class="pto-card__tag">EST. CALIFORNIA</p>
+          <div class="pto-campaign">
+            <img src="assets/higgsfield/playtimezover-campaign.jpg" alt="PlayTimezOver monochrome streetwear campaign" width="1536" height="1024" loading="lazy" />
+            <span class="pto-campaign__label">Campaign / 2026</span>
           </div>
         </div>
       </div>
@@ -977,6 +974,68 @@
   </a>
 
   <script>
+    (() => {
+      const journey = document.querySelector('[data-cinematic-journey]');
+      const film = journey?.querySelector('[data-cinematic-film]');
+      const progressBar = journey?.querySelector('[data-cinematic-progress]');
+      const chapters = Array.from(journey?.querySelectorAll('[data-cinematic-chapter]') || []);
+      const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)');
+
+      if (!journey || !film || reducedMotion.matches) {
+        return;
+      }
+
+      const mobileFilm = window.matchMedia('(max-width: 760px), (pointer: coarse)').matches;
+      film.src = mobileFilm ? film.dataset.mobileSrc : film.dataset.desktopSrc;
+      film.load();
+
+      let duration = 0;
+      let requestedTime = 0;
+      let firstFramePainted = false;
+
+      const clamp = (value, min, max) => Math.min(Math.max(value, min), max);
+
+      const updateJourney = () => {
+        const journeyTop = journey.getBoundingClientRect().top;
+        const scrollableDistance = Math.max(1, journey.offsetHeight - window.innerHeight);
+        const progress = clamp(-journeyTop / scrollableDistance, 0, 1);
+        requestedTime = progress * Math.max(0, duration - 0.04);
+
+        progressBar.style.transform = `scaleX(${progress})`;
+
+        const activeIndex = Math.min(
+          chapters.length - 1,
+          Math.floor(progress * chapters.length)
+        );
+        chapters.forEach((chapter, index) => {
+          chapter.classList.toggle('is-active', index === activeIndex);
+        });
+
+        if (duration && Math.abs(film.currentTime - requestedTime) > 0.025) {
+          film.currentTime = requestedTime;
+        }
+      };
+
+      const revealFilm = () => {
+        if (!firstFramePainted) {
+          firstFramePainted = true;
+          journey.classList.add('is-film-ready');
+        }
+      };
+
+      film.addEventListener('loadedmetadata', () => {
+        duration = Number.isFinite(film.duration) ? film.duration : 0;
+        updateJourney();
+      });
+      film.addEventListener('seeked', revealFilm);
+      film.addEventListener('loadeddata', revealFilm);
+      film.addEventListener('error', () => journey.classList.add('is-film-unavailable'));
+
+      window.addEventListener('scroll', updateJourney, { passive: true });
+      window.addEventListener('resize', updateJourney, { passive: true });
+      updateJourney();
+    })();
+
     const BTC_ADDRESS = 'bc1qnqx9kaqg7xnghfc7t6vcms0skxz5thyu37xc5a';
     const PAYPAL_CLIENT_ID = '';
     const paymentUtils = window.KOSPaymentUtils || {};

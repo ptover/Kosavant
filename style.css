@@ -2903,3 +2903,429 @@ p, li { text-wrap: pretty; max-width: 66ch; }
     width: 180px;
   }
 }
+
+/* ═══════════════════════════════════════════════════════════════
+   HIGGSFIELD CINEMATIC OPENING
+   A scroll-controlled, soundless brand film with a static fallback.
+═══════════════════════════════════════════════════════════════ */
+.cinematic-journey {
+  position: relative;
+  height: 560dvh;
+  min-height: 3200px;
+  background: #050505;
+  color: #fff;
+  isolation: isolate;
+}
+
+.cinematic-stage {
+  position: sticky;
+  top: 0;
+  z-index: 1;
+  width: 100%;
+  height: 100dvh;
+  min-height: 640px;
+  overflow: hidden;
+  background: #080808;
+}
+
+.cinematic-poster,
+.cinematic-film,
+.cinematic-shade,
+.cinematic-grain {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+}
+
+.cinematic-poster {
+  z-index: 0;
+  transition: opacity 500ms ease;
+}
+
+.cinematic-poster img,
+.cinematic-film {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.cinematic-film {
+  z-index: 1;
+  opacity: 0;
+  filter: saturate(0.88) contrast(1.06);
+  transition: opacity 500ms ease;
+}
+
+.cinematic-journey.is-film-ready .cinematic-film {
+  opacity: 1;
+}
+
+.cinematic-journey.is-film-ready .cinematic-poster {
+  opacity: 0;
+}
+
+.cinematic-shade {
+  z-index: 2;
+  background:
+    linear-gradient(90deg, rgba(0, 0, 0, 0.74) 0%, rgba(0, 0, 0, 0.2) 48%, rgba(0, 0, 0, 0.5) 100%),
+    linear-gradient(180deg, rgba(0, 0, 0, 0.48) 0%, transparent 30%, transparent 65%, rgba(0, 0, 0, 0.72) 100%);
+  pointer-events: none;
+}
+
+.cinematic-grain {
+  z-index: 3;
+  opacity: 0.13;
+  pointer-events: none;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 180 180' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='.45'/%3E%3C/svg%3E");
+}
+
+.cinematic-brand,
+.cinematic-status,
+.cinematic-progress,
+.cinematic-scroll {
+  position: absolute;
+  z-index: 5;
+}
+
+.cinematic-brand {
+  top: 112px;
+  left: clamp(24px, 5vw, 80px);
+  display: flex;
+  align-items: baseline;
+  gap: 10px;
+  font-family: "Clash Display", sans-serif;
+  letter-spacing: -0.04em;
+  text-transform: uppercase;
+}
+
+.cinematic-brand span:first-child {
+  display: grid;
+  width: 39px;
+  height: 39px;
+  place-items: center;
+  border: 1px solid rgba(255, 255, 255, 0.75);
+  font-size: 0.85rem;
+  letter-spacing: 0;
+}
+
+.cinematic-brand span:last-child {
+  font-size: 0.9rem;
+  font-weight: 600;
+  letter-spacing: 0.22em;
+}
+
+.cinematic-status {
+  top: 126px;
+  right: clamp(24px, 5vw, 80px);
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin: 0;
+  color: rgba(255, 255, 255, 0.76);
+  font-size: 0.68rem;
+  font-weight: 700;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+}
+
+.cinematic-status span {
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: #ff3b30;
+  box-shadow: 0 0 16px rgba(255, 59, 48, 0.8);
+}
+
+.cinematic-progress {
+  right: clamp(24px, 5vw, 80px);
+  bottom: 46px;
+  left: clamp(24px, 5vw, 80px);
+  height: 1px;
+  overflow: hidden;
+  background: rgba(255, 255, 255, 0.28);
+  transform-origin: left;
+}
+
+.cinematic-progress span {
+  display: block;
+  width: 100%;
+  height: 100%;
+  background: #ff3b30;
+  transform: scaleX(0);
+  transform-origin: left;
+  will-change: transform;
+}
+
+.cinematic-scroll {
+  right: clamp(24px, 5vw, 80px);
+  bottom: 61px;
+  margin: 0;
+  color: rgba(255, 255, 255, 0.58);
+  font-size: 0.65rem;
+  font-weight: 700;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+}
+
+.cinematic-chapters {
+  position: absolute;
+  z-index: 4;
+  inset: 0;
+  pointer-events: none;
+}
+
+.cinematic-chapter {
+  display: flex;
+  width: 100%;
+  height: 112dvh;
+  min-height: 640px;
+  align-items: center;
+  padding: 130px clamp(24px, 7vw, 110px) 90px;
+}
+
+.cinematic-copy {
+  width: min(760px, 74vw);
+  opacity: 0.16;
+  transform: translateY(28px);
+  transition: opacity 420ms ease, transform 420ms ease;
+}
+
+.cinematic-chapter.is-active .cinematic-copy {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.cinematic-copy--right {
+  margin-left: auto;
+  text-align: right;
+}
+
+.cinematic-copy--center {
+  margin: auto;
+  text-align: center;
+}
+
+.cinematic-index {
+  margin: 0 0 22px;
+  color: #ff5148 !important;
+  font-size: 0.72rem !important;
+  font-weight: 700;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+}
+
+.cinematic-copy h1,
+.cinematic-copy h2 {
+  margin: 0;
+  color: #fff;
+  font-family: "Clash Display", sans-serif;
+  font-size: clamp(4.8rem, 9.5vw, 9rem);
+  font-weight: 500;
+  line-height: 0.79;
+  letter-spacing: -0.075em;
+  text-wrap: balance;
+  text-shadow: 0 4px 34px rgba(0, 0, 0, 0.38);
+}
+
+.cinematic-copy h1 em,
+.cinematic-copy h2 em {
+  color: #ff3b30;
+  font-weight: 500;
+}
+
+.cinematic-copy > p:not(.cinematic-index) {
+  max-width: 590px;
+  margin: 30px 0 0;
+  color: rgba(255, 255, 255, 0.86);
+  font-size: clamp(1rem, 1.5vw, 1.25rem);
+  line-height: 1.6;
+  text-shadow: 0 2px 18px rgba(0, 0, 0, 0.8);
+}
+
+.cinematic-copy--right > p:not(.cinematic-index) {
+  margin-left: auto;
+}
+
+.cinematic-copy--center > p:not(.cinematic-index) {
+  margin-right: auto;
+  margin-left: auto;
+}
+
+.cinematic-actions {
+  display: flex;
+  gap: 12px;
+  margin-top: 34px;
+  pointer-events: auto;
+}
+
+.cinematic-copy > .btn {
+  margin-top: 34px;
+  pointer-events: auto;
+}
+
+.btn--glass {
+  color: #fff;
+  border: 1px solid rgba(255, 255, 255, 0.42);
+  background: rgba(8, 8, 8, 0.25);
+  backdrop-filter: blur(12px);
+}
+
+.btn--glass:hover {
+  color: #fff;
+  border-color: rgba(255, 255, 255, 0.8);
+  background: rgba(255, 255, 255, 0.13);
+}
+
+.pto-campaign {
+  position: relative;
+  overflow: hidden;
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  border-radius: 28px;
+  box-shadow: 0 30px 90px rgba(0, 0, 0, 0.58);
+  transform: rotate(1.5deg);
+}
+
+.pto-campaign::after {
+  position: absolute;
+  inset: 0;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: inherit;
+  content: "";
+  pointer-events: none;
+}
+
+.pto-campaign img {
+  display: block;
+  width: 100%;
+  aspect-ratio: 3 / 4;
+  object-fit: cover;
+  filter: saturate(0.75) contrast(1.08);
+}
+
+.pto-campaign__label {
+  position: absolute;
+  right: 18px;
+  bottom: 18px;
+  padding: 9px 12px;
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  border-radius: 999px;
+  color: rgba(255, 255, 255, 0.9);
+  background: rgba(0, 0, 0, 0.5);
+  backdrop-filter: blur(12px);
+  font-size: 0.64rem;
+  font-weight: 700;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+}
+
+@media (max-width: 760px) {
+  .cinematic-journey {
+    height: 520dvh;
+    min-height: 3000px;
+  }
+
+  .cinematic-stage {
+    min-height: 580px;
+  }
+
+  .cinematic-shade {
+    background:
+      linear-gradient(180deg, rgba(0, 0, 0, 0.42) 0%, rgba(0, 0, 0, 0.08) 30%, rgba(0, 0, 0, 0.72) 100%),
+      linear-gradient(90deg, rgba(0, 0, 0, 0.42), transparent 75%);
+  }
+
+  .cinematic-brand {
+    top: 116px;
+    left: 22px;
+  }
+
+  .cinematic-status {
+    top: 124px;
+    right: 20px;
+    max-width: 134px;
+    justify-content: flex-end;
+    text-align: right;
+    line-height: 1.35;
+  }
+
+  .cinematic-scroll {
+    display: none;
+  }
+
+  .cinematic-progress {
+    right: 22px;
+    bottom: 38px;
+    left: 22px;
+  }
+
+  .cinematic-chapter {
+    height: 104dvh;
+    min-height: 600px;
+    align-items: flex-end;
+    padding: 150px 22px 94px;
+  }
+
+  .cinematic-copy,
+  .cinematic-copy--right,
+  .cinematic-copy--center {
+    width: 100%;
+    margin: 0;
+    text-align: left;
+  }
+
+  .cinematic-copy h1,
+  .cinematic-copy h2 {
+    font-size: clamp(4.15rem, 18vw, 6.25rem);
+    line-height: 0.82;
+  }
+
+  .cinematic-copy--right > p:not(.cinematic-index),
+  .cinematic-copy--center > p:not(.cinematic-index) {
+    margin-right: 0;
+    margin-left: 0;
+  }
+
+  .cinematic-actions {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .cinematic-actions .btn,
+  .cinematic-copy > .btn {
+    width: 100%;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .cinematic-journey {
+    height: auto;
+    min-height: 0;
+  }
+
+  .cinematic-stage {
+    position: absolute;
+    height: 100%;
+  }
+
+  .cinematic-film,
+  .cinematic-scroll,
+  .cinematic-progress {
+    display: none;
+  }
+
+  .cinematic-chapters {
+    position: relative;
+  }
+
+  .cinematic-chapter {
+    height: auto;
+    min-height: 85dvh;
+  }
+
+  .cinematic-copy {
+    opacity: 1;
+    transform: none;
+    transition: none;
+  }
+}

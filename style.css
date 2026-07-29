@@ -3015,6 +3015,14 @@ p, li { text-wrap: pretty; max-width: 66ch; }
   letter-spacing: 0.22em;
 }
 
+.cinematic-brand small {
+  margin-left: 7px;
+  color: rgba(255, 255, 255, 0.55);
+  font: inherit;
+  font-size: 0.63rem;
+  letter-spacing: 0.13em;
+}
+
 .cinematic-status {
   top: 126px;
   right: clamp(24px, 5vw, 80px);
@@ -3035,6 +3043,67 @@ p, li { text-wrap: pretty; max-width: 66ch; }
   border-radius: 50%;
   background: #ff3b30;
   box-shadow: 0 0 16px rgba(255, 59, 48, 0.8);
+}
+
+.cinematic-tabs {
+  position: absolute;
+  z-index: 6;
+  top: 50%;
+  right: clamp(20px, 3vw, 48px);
+  display: flex;
+  flex-direction: column;
+  gap: 7px;
+  width: 154px;
+  transform: translateY(-50%);
+  pointer-events: auto;
+}
+
+.cinematic-tab {
+  display: flex;
+  width: 100%;
+  align-items: center;
+  gap: 10px;
+  padding: 10px 12px;
+  border: 1px solid rgba(255, 255, 255, 0.16);
+  border-radius: 999px;
+  color: rgba(255, 255, 255, 0.58);
+  background: rgba(5, 5, 5, 0.38);
+  backdrop-filter: blur(14px);
+  cursor: pointer;
+  font-family: "Satoshi", sans-serif;
+  font-size: 0.67rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-align: left;
+  text-transform: uppercase;
+  transition:
+    color 180ms ease,
+    border-color 180ms ease,
+    background 180ms ease,
+    transform 180ms ease;
+}
+
+.cinematic-tab span {
+  color: #ff5148;
+  font-variant-numeric: tabular-nums;
+}
+
+.cinematic-tab:hover {
+  color: #fff;
+  border-color: rgba(255, 255, 255, 0.46);
+  transform: translateX(-4px);
+}
+
+.cinematic-tab:focus-visible {
+  outline: 2px solid #fff;
+  outline-offset: 3px;
+}
+
+.cinematic-tab.is-active {
+  color: #fff;
+  border-color: #ff3b30;
+  background: rgba(255, 59, 48, 0.2);
+  box-shadow: 0 0 24px rgba(255, 59, 48, 0.12);
 }
 
 .cinematic-progress {
@@ -3240,6 +3309,10 @@ p, li { text-wrap: pretty; max-width: 66ch; }
     left: 22px;
   }
 
+  .cinematic-brand small {
+    display: none;
+  }
+
   .cinematic-status {
     top: 124px;
     right: 20px;
@@ -3251,6 +3324,36 @@ p, li { text-wrap: pretty; max-width: 66ch; }
 
   .cinematic-scroll {
     display: none;
+  }
+
+  .cinematic-tabs {
+    top: 174px;
+    right: 0;
+    left: 0;
+    width: 100%;
+    flex-direction: row;
+    gap: 7px;
+    overflow-x: auto;
+    padding: 0 22px 8px;
+    transform: none;
+    scrollbar-width: none;
+    scroll-snap-type: x proximity;
+  }
+
+  .cinematic-tabs::-webkit-scrollbar {
+    display: none;
+  }
+
+  .cinematic-tab {
+    width: auto;
+    min-width: max-content;
+    flex: 0 0 auto;
+    padding: 9px 12px;
+    scroll-snap-align: center;
+  }
+
+  .cinematic-tab:hover {
+    transform: none;
   }
 
   .cinematic-progress {

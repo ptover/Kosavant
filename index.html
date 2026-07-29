@@ -148,14 +148,32 @@
 
       <div class="cinematic-brand" aria-label="KO Savant">
         <span>KO</span>
-        <span>SAVANT</span>
+        <span>SAVANT <small>× PlayTimezOver</small></span>
       </div>
       <p class="cinematic-status"><span></span>Now booking strategy sessions</p>
+
+      <nav class="cinematic-tabs" aria-label="Explore the PlayTimezOver brand film" data-cinematic-tabs>
+        <button class="cinematic-tab is-active" type="button" data-cinematic-tab="0" aria-current="step">
+          <span>01</span> Direction
+        </button>
+        <button class="cinematic-tab" type="button" data-cinematic-tab="1">
+          <span>02</span> Fabric
+        </button>
+        <button class="cinematic-tab" type="button" data-cinematic-tab="2">
+          <span>03</span> Construction
+        </button>
+        <button class="cinematic-tab" type="button" data-cinematic-tab="3">
+          <span>04</span> Campaign
+        </button>
+        <button class="cinematic-tab" type="button" data-cinematic-tab="4">
+          <span>05</span> Uniform
+        </button>
+      </nav>
 
       <div class="cinematic-progress" aria-hidden="true">
         <span data-cinematic-progress></span>
       </div>
-      <p class="cinematic-scroll" aria-hidden="true">Scroll to enter the atelier</p>
+      <p class="cinematic-scroll" aria-hidden="true">Scroll or choose a chapter</p>
     </div>
 
     <div class="cinematic-chapters">
@@ -173,33 +191,33 @@
 
       <article class="cinematic-chapter" data-cinematic-chapter>
         <div class="cinematic-copy cinematic-copy--right">
-          <p class="cinematic-index">02 / Clarity</p>
-          <h2>Name the real<br><em>decision.</em></h2>
-          <p>Cut through the noise. Find the one choice that makes the next ten moves easier.</p>
+          <p class="cinematic-index">02 / Fabric</p>
+          <h2>Start with what<br><em>people feel.</em></h2>
+          <p>Weight, hand, structure, and fit turn a graphic idea into a product worth remembering.</p>
         </div>
       </article>
 
       <article class="cinematic-chapter" data-cinematic-chapter>
         <div class="cinematic-copy">
-          <p class="cinematic-index">03 / Positioning</p>
-          <h2>Make the brand<br><em>legible.</em></h2>
-          <p>Clarify who it is for, why it matters, and what makes the offer worth choosing.</p>
+          <p class="cinematic-index">03 / Construction</p>
+          <h2>Make every seam<br><em>intentional.</em></h2>
+          <p>The strongest brands carry one point of view through the garment, the message, and every detail.</p>
         </div>
       </article>
 
       <article class="cinematic-chapter" data-cinematic-chapter>
         <div class="cinematic-copy cinematic-copy--right">
-          <p class="cinematic-index">04 / Launch</p>
-          <h2>Build the<br><em>launch path.</em></h2>
-          <p>Translate vision into priorities, proof, and a rollout your audience can follow.</p>
+          <p class="cinematic-index">04 / Campaign</p>
+          <h2>Turn product<br><em>into a world.</em></h2>
+          <p>Give the collection a visual language, a reason to care, and a launch people can enter.</p>
         </div>
       </article>
 
       <article class="cinematic-chapter" data-cinematic-chapter>
         <div class="cinematic-copy cinematic-copy--center">
-          <p class="cinematic-index">05 / Conviction</p>
-          <h2>Move with<br><em>conviction.</em></h2>
-          <p>Strategy is only useful when it turns into action.</p>
+          <p class="cinematic-index">05 / Uniform</p>
+          <h2>Wear the<br><em>conviction.</em></h2>
+          <p>PlayTimezOver is the proof: strategy becomes real when people can put it on.</p>
           <a href="#consultation-booking" class="btn btn--primary">Book KO Savant</a>
         </div>
       </article>
@@ -979,9 +997,63 @@
       const film = journey?.querySelector('[data-cinematic-film]');
       const progressBar = journey?.querySelector('[data-cinematic-progress]');
       const chapters = Array.from(journey?.querySelectorAll('[data-cinematic-chapter]') || []);
+      const chapterTabs = Array.from(journey?.querySelectorAll('[data-cinematic-tab]') || []);
       const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)');
 
-      if (!journey || !film || reducedMotion.matches) {
+      if (!journey || !film) {
+        return;
+      }
+
+      const setActiveChapter = (activeIndex) => {
+        chapters.forEach((chapter, index) => {
+          chapter.classList.toggle('is-active', index === activeIndex);
+        });
+        chapterTabs.forEach((tab, index) => {
+          tab.classList.toggle('is-active', index === activeIndex);
+          if (index === activeIndex) {
+            tab.setAttribute('aria-current', 'step');
+          } else {
+            tab.removeAttribute('aria-current');
+          }
+        });
+      };
+
+      const goToChapter = (index) => {
+        if (reducedMotion.matches) {
+          chapters[index]?.scrollIntoView({ behavior: 'auto', block: 'center' });
+          setActiveChapter(index);
+          return;
+        }
+
+        const journeyTop = window.scrollY + journey.getBoundingClientRect().top;
+        const scrollableDistance = Math.max(1, journey.offsetHeight - window.innerHeight);
+        const progress = chapterTabs.length > 1 ? index / (chapterTabs.length - 1) : 0;
+        window.scrollTo({
+          top: journeyTop + (scrollableDistance * progress),
+          behavior: 'smooth',
+        });
+      };
+
+      chapterTabs.forEach((tab, index) => {
+        tab.addEventListener('click', () => goToChapter(index));
+        tab.addEventListener('keydown', (event) => {
+          if (!['ArrowLeft', 'ArrowRight', 'ArrowUp', 'ArrowDown', 'Home', 'End'].includes(event.key)) {
+            return;
+          }
+
+          event.preventDefault();
+          const previousKey = event.key === 'ArrowLeft' || event.key === 'ArrowUp';
+          const nextIndex = event.key === 'Home'
+            ? 0
+            : event.key === 'End'
+              ? chapterTabs.length - 1
+              : (index + (previousKey ? -1 : 1) + chapterTabs.length) % chapterTabs.length;
+          chapterTabs[nextIndex].focus();
+          goToChapter(nextIndex);
+        });
+      });
+
+      if (reducedMotion.matches) {
         return;
       }
 
@@ -1007,9 +1079,7 @@
           chapters.length - 1,
           Math.floor(progress * chapters.length)
         );
-        chapters.forEach((chapter, index) => {
-          chapter.classList.toggle('is-active', index === activeIndex);
-        });
+        setActiveChapter(activeIndex);
 
         if (duration && Math.abs(film.currentTime - requestedTime) > 0.025) {
           film.currentTime = requestedTime;

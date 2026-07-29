@@ -25,6 +25,27 @@ test('site accent theme is red again', () => {
   assert.match(styleCss, /--color-accent-dim:\s*rgba\(239, 68, 68, 0\.12\)/i);
 });
 
+test('cinematic opening is grounded in PlayTimezOver clothing', () => {
+  assert.match(indexHtml, /SAVANT <small>× PlayTimezOver<\/small>/);
+  assert.match(indexHtml, /02 \/ Fabric/);
+  assert.match(indexHtml, /03 \/ Construction/);
+  assert.match(indexHtml, /04 \/ Campaign/);
+  assert.match(indexHtml, /05 \/ Uniform/);
+  assert.match(indexHtml, /PlayTimezOver is the proof/i);
+});
+
+test('cinematic chapter tabs are clickable and keyboard accessible', () => {
+  const chapterTabs = indexHtml.match(/data-cinematic-tab="\d"/g) || [];
+
+  assert.equal(chapterTabs.length, 5);
+  assert.match(indexHtml, /aria-label="Explore the PlayTimezOver brand film"/);
+  assert.match(indexHtml, /tab\.addEventListener\('click', \(\) => goToChapter\(index\)\)/);
+  assert.match(indexHtml, /ArrowLeft/);
+  assert.match(indexHtml, /ArrowRight/);
+  assert.match(indexHtml, /tab\.setAttribute\('aria-current', 'step'\)/);
+  assert.match(styleCss, /\.cinematic-tab:focus-visible/);
+});
+
 test('homepage includes a dedicated consulting offers section before payment', () => {
   assert.match(indexHtml, /Choose Your Session/i);
   assert.match(indexHtml, /Quick answer to one key issue/i);

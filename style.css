@@ -4118,3 +4118,39 @@ p, li { text-wrap: pretty; max-width: 66ch; }
     top: auto;
   }
 }
+
+.pto-grid--copy-only {
+  grid-template-columns: minmax(0, 760px);
+  justify-content: center;
+  text-align: center;
+}
+
+.pto-grid--copy-only .pto-body {
+  margin-right: auto;
+  margin-left: auto;
+}
+
+.pto-grid--copy-only .pto-proof,
+.pto-grid--copy-only .pto-actions {
+  justify-content: center;
+}
+
+@media (max-width: 760px) {
+  .pto-grid--copy-only {
+    text-align: left;
+  }
+
+  .pto-grid--copy-only .pto-heading {
+    font-size: clamp(2.25rem, 10.9vw, 4.4rem);
+  }
+
+  .pto-grid--copy-only .pto-body {
+    margin-right: 0;
+    margin-left: 0;
+  }
+
+  .pto-grid--copy-only .pto-proof,
+  .pto-grid--copy-only .pto-actions {
+    justify-content: flex-start;
+  }
+}

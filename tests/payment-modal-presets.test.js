@@ -34,12 +34,13 @@ test('cinematic opening is grounded in PlayTimezOver clothing', () => {
   assert.match(indexHtml, /PlayTimezOver is the proof/i);
 });
 
-test('PlayTimezOver landing section uses one-word branding and real products', () => {
+test('PlayTimezOver landing section uses one-word branding without product cards', () => {
   assert.match(indexHtml, /aria-label="PlayTimezOver"><span>PlayTimez<\/span><span class="pto-heading--accent">Over<\/span>/);
   assert.doesNotMatch(indexHtml, /PlayTimez<br/i);
-  assert.match(indexHtml, /assets\/playtimezover\/p-logo-tee\.jpg/);
-  assert.match(indexHtml, /assets\/playtimezover\/p-logo-cap\.jpg/);
-  assert.match(indexHtml, /assets\/playtimezover\/p-durag\.jpg/);
+  assert.doesNotMatch(indexHtml, /assets\/playtimezover\/p-logo-tee\.jpg/);
+  assert.doesNotMatch(indexHtml, /assets\/playtimezover\/p-logo-cap\.jpg/);
+  assert.doesNotMatch(indexHtml, /assets\/playtimezover\/p-durag\.jpg/);
+  assert.doesNotMatch(indexHtml, /P Logo (Tee|Cap)|P Durag/);
   assert.match(indexHtml, /Shop New Drop/i);
   assert.match(indexHtml, /pages\/early-access/);
 });

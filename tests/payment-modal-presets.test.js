@@ -19,6 +19,16 @@ test('book a consultation is a direct active link with a visible booking section
   assert.match(indexHtml, /id="bookingFormInline"/);
 });
 
+test('top navigation provides home and downloadable contact controls', () => {
+  assert.match(indexHtml, /class="top-nav__home" href="https:\/\/kosavant\.com\/">Home<\/a>/);
+  assert.match(
+    indexHtml,
+    /class="top-nav__save" href="https:\/\/kosavant\.com\/ko-savant-contact\.vcf" download="KO-Savant\.vcf">Save Contact<\/a>/
+  );
+  assert.equal(fs.existsSync(path.join(__dirname, '..', 'ko-savant-contact.vcf')), true);
+  assert.match(styleCss, /a:not\(\.top-nav__home\):not\(\.top-nav__save\):not\(\.top-nav__cta\)/);
+});
+
 test('site accent theme is red again', () => {
   assert.match(styleCss, /--color-accent:\s*#ef4444/i);
   assert.match(styleCss, /--color-accent-hover:\s*#f87171/i);

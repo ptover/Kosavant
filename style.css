@@ -70,7 +70,7 @@ html {
   -moz-osx-font-smoothing: grayscale;
   scroll-behavior: smooth;
   scroll-padding-top: 2rem;
-  overflow-x: hidden;
+  overflow-x: clip;
 }
 body {
   font-family: var(--font-body);
@@ -78,7 +78,7 @@ body {
   color: var(--color-text);
   background-color: var(--color-bg);
   min-height: 100dvh;
-  overflow-x: hidden;
+  overflow-x: clip;
   line-height: 1.6;
 }
 img, svg { display: block; max-width: 100%; height: auto; }
@@ -4169,6 +4169,13 @@ body.modal-open .back-to-top {
 @media (max-width: 760px) {
   .cinematic-status {
     display: none;
+  }
+
+  .cinematic-poster img,
+  .cinematic-film {
+    object-fit: contain;
+    object-position: center;
+    background: #050505;
   }
 
   .cinematic-tabs {

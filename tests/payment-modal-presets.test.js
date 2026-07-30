@@ -34,6 +34,16 @@ test('cinematic opening is grounded in PlayTimezOver clothing', () => {
   assert.match(indexHtml, /PlayTimezOver is the proof/i);
 });
 
+test('PlayTimezOver landing section uses one-word branding and real products', () => {
+  assert.match(indexHtml, /aria-label="PlayTimezOver"><span>PlayTimez<\/span><span class="pto-heading--accent">Over<\/span>/);
+  assert.doesNotMatch(indexHtml, /PlayTimez<br/i);
+  assert.match(indexHtml, /assets\/playtimezover\/p-logo-tee\.jpg/);
+  assert.match(indexHtml, /assets\/playtimezover\/p-logo-cap\.jpg/);
+  assert.match(indexHtml, /assets\/playtimezover\/p-durag\.jpg/);
+  assert.match(indexHtml, /Shop New Drop/i);
+  assert.match(indexHtml, /pages\/early-access/);
+});
+
 test('cinematic chapter tabs are clickable and keyboard accessible', () => {
   const chapterTabs = indexHtml.match(/data-cinematic-tab="\d"/g) || [];
 
@@ -44,6 +54,8 @@ test('cinematic chapter tabs are clickable and keyboard accessible', () => {
   assert.match(indexHtml, /ArrowRight/);
   assert.match(indexHtml, /tab\.setAttribute\('aria-current', 'step'\)/);
   assert.match(styleCss, /\.cinematic-tab:focus-visible/);
+  assert.match(styleCss, /\.cinematic-tab\.is-active[\s\S]*background:\s*#e9362e/);
+  assert.match(styleCss, /\.cinematic-copy[\s\S]*backdrop-filter:\s*blur\(22px\)/);
 });
 
 test('homepage includes a dedicated consulting offers section before payment', () => {

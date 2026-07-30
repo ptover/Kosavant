@@ -34,6 +34,16 @@ test('cinematic opening is grounded in PlayTimezOver clothing', () => {
   assert.match(indexHtml, /PlayTimezOver is the proof/i);
 });
 
+test('mobile cinematic keeps the full portrait film visible', () => {
+  assert.match(indexHtml, /data-mobile-src="assets\/higgsfield\/ko-savant-atelier-mobile\.mp4"/);
+  assert.match(
+    styleCss,
+    /@media \(max-width: 760px\)[\s\S]*?\.cinematic-poster img,\s*\.cinematic-film\s*\{[^}]*object-fit:\s*contain[^}]*object-position:\s*center/s
+  );
+  assert.match(styleCss, /html\s*\{[^}]*overflow-x:\s*clip/s);
+  assert.match(styleCss, /body\s*\{[^}]*overflow-x:\s*clip/s);
+});
+
 test('PlayTimezOver landing section uses one-word branding without product cards', () => {
   assert.match(indexHtml, /aria-label="PlayTimezOver"><span>PlayTimez<\/span><span class="pto-heading--accent">Over<\/span>/);
   assert.doesNotMatch(indexHtml, /PlayTimez<br/i);

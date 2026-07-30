@@ -70,6 +70,7 @@ html {
   -moz-osx-font-smoothing: grayscale;
   scroll-behavior: smooth;
   scroll-padding-top: 2rem;
+  overflow-x: hidden;
 }
 body {
   font-family: var(--font-body);
@@ -2020,6 +2021,16 @@ body.modal-open .back-to-top {
   font-size: var(--text-sm);
   color: var(--color-text-muted);
   line-height: 1.55;
+}
+
+.pay-other-methods__note a {
+  color: var(--color-text);
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+
+.pay-other-methods__note a:hover {
+  color: var(--color-accent);
 }
 
 .pay-after-panel {

@@ -890,6 +890,7 @@
         </div>
       </div>
     </div>
+  </div>
 </div>
 
 <!-- Bitcoin Address Modal -->
@@ -1387,12 +1388,22 @@
 
     function openModal(el) {
       el.classList.add('open');
+      el.scrollTop = 0;
+      const modalSurface = el.querySelector('.modal');
+      if (modalSurface) modalSurface.scrollTop = 0;
+      document.body.classList.add('modal-open');
       document.body.style.overflow = 'hidden';
+
+      const closeControl = el.querySelector('.modal__close');
+      requestAnimationFrame(() => closeControl?.focus({ preventScroll: true }));
     }
 
     function closeModal(el, returnFocus) {
       el.classList.remove('open');
-      document.body.style.overflow = '';
+      if (!document.querySelector('.modal-overlay.open')) {
+        document.body.classList.remove('modal-open');
+        document.body.style.overflow = '';
+      }
       if (returnFocus) returnFocus.focus();
     }
 

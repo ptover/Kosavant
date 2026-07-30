@@ -1268,6 +1268,10 @@ p, li { text-wrap: pretty; max-width: 66ch; }
   display: grid;
   place-items: center;
   padding: var(--space-6);
+  overflow-x: hidden;
+  overflow-y: auto;
+  overscroll-behavior: contain;
+  -webkit-overflow-scrolling: touch;
   opacity: 0;
   pointer-events: none;
   transition: opacity 0.25s var(--ease-out);
@@ -1316,6 +1320,16 @@ p, li { text-wrap: pretty; max-width: 66ch; }
   transition: color var(--transition), background var(--transition);
 }
 .modal__close:hover { color: var(--color-text); background: var(--color-surface-2); }
+
+body.modal-open {
+  overflow: hidden;
+  overscroll-behavior: none;
+}
+
+body.modal-open .back-to-top {
+  opacity: 0;
+  pointer-events: none;
+}
 
 .form-field {
   display: flex;
@@ -2616,7 +2630,116 @@ p, li { text-wrap: pretty; max-width: 66ch; }
   }
 
   .modal.pay-modal {
-    padding: var(--space-5);
+    max-height: calc(100dvh - max(16px, env(safe-area-inset-top)) - max(16px, env(safe-area-inset-bottom)));
+    padding: 18px 14px max(24px, env(safe-area-inset-bottom));
+    overflow-x: hidden;
+    overflow-y: auto;
+    overscroll-behavior: contain;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: thin;
+  }
+
+  #payModal {
+    place-items: start center;
+    padding:
+      max(8px, env(safe-area-inset-top))
+      8px
+      max(8px, env(safe-area-inset-bottom));
+  }
+
+  .pay-modal > .modal__header {
+    position: sticky;
+    top: -1px;
+    z-index: 5;
+    margin: -2px -2px 14px;
+    padding: 2px 2px 12px;
+    background: rgba(17,17,17,0.99);
+    border-bottom: 1px solid rgba(255,255,255,0.08);
+    box-shadow: 0 12px 24px rgba(0,0,0,0.28);
+  }
+
+  .pay-modal .modal__title {
+    font-size: 1.35rem;
+  }
+
+  .pay-modal .modal__sub {
+    max-width: 30ch;
+    line-height: 1.45;
+  }
+
+  .pay-modal .modal__close {
+    min-width: 44px;
+    min-height: 44px;
+    margin: -6px -6px 0 8px;
+    display: grid;
+    place-items: center;
+  }
+
+  .pay-trust-panel {
+    border-radius: 22px;
+  }
+
+  .pay-trust-title {
+    font-size: clamp(1.35rem, 7vw, 1.75rem);
+  }
+
+  .pay-trust-copy {
+    font-size: 0.93rem;
+    line-height: 1.55;
+  }
+
+  .pay-proof-strip {
+    flex-wrap: nowrap;
+    margin-inline: -4px;
+    padding: 2px 4px 8px;
+    overflow-x: auto;
+    scrollbar-width: none;
+  }
+
+  .pay-proof-strip::-webkit-scrollbar {
+    display: none;
+  }
+
+  .pay-proof-strip span {
+    flex: 0 0 auto;
+  }
+
+  .pay-steps {
+    display: none;
+  }
+
+  .pay-summary-card {
+    min-height: 0;
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) auto;
+    gap: 8px 14px;
+    align-items: end;
+  }
+
+  .pay-summary-card__eyebrow {
+    grid-column: 1 / -1;
+    margin-bottom: 0;
+  }
+
+  .pay-summary-card__amount {
+    margin: 0;
+    text-align: right;
+  }
+
+  .pay-summary-card__note,
+  .pay-summary-card__meta {
+    display: none;
+  }
+
+  .pay-preset-panel {
+    margin-block: 14px;
+  }
+
+  .pay-preset,
+  .pay-method-btn,
+  .pay-invoice-btn,
+  .pay-other-methods summary {
+    touch-action: manipulation;
   }
 }
 

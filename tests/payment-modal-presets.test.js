@@ -84,6 +84,29 @@ test('payment modal guides visitors through a simple two-step flow', () => {
   assert.match(indexHtml, /Pick how you want to pay/i);
 });
 
+test('payment modal locks the page and resets its own scroll position when opened', () => {
+  assert.match(indexHtml, /el\.scrollTop\s*=\s*0/);
+  assert.match(indexHtml, /modalSurface\.scrollTop\s*=\s*0/);
+  assert.match(indexHtml, /document\.body\.classList\.add\('modal-open'\)/);
+  assert.match(indexHtml, /document\.body\.classList\.remove\('modal-open'\)/);
+  assert.match(indexHtml, /closeControl\?\.focus\(\{\s*preventScroll:\s*true\s*\}\)/);
+});
+
+test('payment, Bitcoin, and booking dialogs are separate top-level overlays', () => {
+  assert.match(
+    indexHtml,
+    /<\/div>\s*<\/div>\s*<\/div>\s*<\/div>\s*<!-- Bitcoin Address Modal -->/
+  );
+});
+
+test('mobile payment modal remains scrollable above browser safe areas', () => {
+  assert.match(styleCss, /#payModal\s*\{[^}]*place-items:\s*start center/s);
+  assert.match(styleCss, /\.modal\.pay-modal\s*\{[^}]*max-height:\s*calc\(100dvh/s);
+  assert.match(styleCss, /\.modal\.pay-modal\s*\{[^}]*overflow-y:\s*auto/s);
+  assert.match(styleCss, /env\(safe-area-inset-bottom\)/);
+  assert.match(styleCss, /\.pay-modal\s*>\s*\.modal__header\s*\{[^}]*position:\s*sticky/s);
+});
+
 test('payment modal makes card and wallet checkout the primary path', () => {
   assert.match(indexHtml, /id="secureCheckoutBtn"/);
   assert.match(indexHtml, /Pay with Card or Wallet/i);

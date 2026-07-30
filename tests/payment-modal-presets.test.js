@@ -129,7 +129,7 @@ test('payment modal adds after-payment guidance and support trust cues', () => {
   assert.match(indexHtml, /Confirmation is sent right after payment/i);
   assert.match(indexHtml, /30 Min Consult clients receive a booking link/i);
   assert.match(indexHtml, /Brand Audit clients receive intake details and a turnaround note/i);
-  assert.match(indexHtml, /Questions before paying\? Contact Monique at \+1 \(909\) 529-9099/i);
+  assert.match(indexHtml, /Questions before paying\? Call or text \+1 \(909\) 529-9099/i);
   assert.match(indexHtml, /Privacy Policy/i);
 });
 
@@ -154,11 +154,12 @@ test('site ships a real privacy policy page for checkout and feedback trust', ()
   assert.equal(fs.existsSync(privacyPolicyPath), true);
 });
 
-test('Monique has working call and text links across contact and payment support', () => {
+test('Call and text links work across contact and payment support', () => {
   assert.match(indexHtml, /href="tel:\+19095299099"/);
   assert.match(indexHtml, /href="sms:\+19095299099"/);
-  assert.match(indexHtml, /Call Monique/i);
-  assert.match(indexHtml, /Text Monique/i);
+  assert.match(indexHtml, /Call/i);
+  assert.match(indexHtml, /Text/i);
+  assert.doesNotMatch(indexHtml, /Monique/i);
   assert.match(indexHtml, /\+1 \(909\) 529-9099/);
   assert.match(indexHtml, /"telephone": "\+1-909-529-9099"/);
 });
